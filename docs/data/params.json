@@ -1,6 +1,6 @@
 {
   "impulseBars": 10,
-  "minDxyImpulseATR": 2.0,
+  "minDxyImpulseATR": 2,
   "maxGoldMoveATR": 0.75,
   "dxyRetracement": 0.5,
   "maxSetupAgeBars": 30,
