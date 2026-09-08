@@ -1,21 +1,6 @@
 {
-  "balance": 9506.969999999972,
-  "openTrades": [
-    {
-      "id": 13,
-      "direction": "long",
-      "entry": 4408.91702,
-      "sl": 4392.004155810992,
-      "size": 5.6211472484826235,
-      "riskAmount": 95.06969999999973,
-      "entryTime": "2026-09-08 22:30:00",
-      "entryDXY": 98.87070157795802,
-      "confirmations": [
-        "RSI",
-        "Price action"
-      ]
-    }
-  ],
+  "balance": 9411.900299999972,
+  "openTrades": [],
   "closedTrades": [
     {
       "id": 2,
@@ -112,10 +97,40 @@
       "exitReason": "Stop loss",
       "pnl": -96.03000000000124,
       "rMultiple": -1.0000000000000158
+    },
+    {
+      "id": 13,
+      "direction": "long",
+      "entry": 4408.91702,
+      "sl": 4392.004155810992,
+      "size": 5.6211472484826235,
+      "riskAmount": 95.06969999999973,
+      "entryTime": "2026-09-08 22:30:00",
+      "entryDXY": 98.87070157795802,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4392.004155810992,
+      "exitTime": "2026-09-09 00:30:00",
+      "exitReason": "Stop loss",
+      "pnl": -95.06969999999953,
+      "rMultiple": -0.9999999999999979
     }
   ],
-  "pendingSetups": [],
-  "lastProcessedTime": "2026-09-08 22:30:00",
-  "lastClose": 4408.91702,
-  "nextId": 14
+  "pendingSetups": [
+    {
+      "id": 14,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 98.92616593953683,
+      "impulseEnd": 98.83267222921218,
+      "detectedTime": "2026-09-08 23:00:00",
+      "ageBars": 3,
+      "retracementMet": false
+    }
+  ],
+  "lastProcessedTime": "2026-09-09 00:30:00",
+  "lastClose": 4395.80878,
+  "nextId": 15
 }
