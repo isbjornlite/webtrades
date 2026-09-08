@@ -1,6 +1,21 @@
 {
   "balance": 9506.969999999972,
-  "openTrades": [],
+  "openTrades": [
+    {
+      "id": 13,
+      "direction": "long",
+      "entry": 4408.91702,
+      "sl": 4392.004155810992,
+      "size": 5.6211472484826235,
+      "riskAmount": 95.06969999999973,
+      "entryTime": "2026-09-08 22:30:00",
+      "entryDXY": 98.87070157795802,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ]
+    }
+  ],
   "closedTrades": [
     {
       "id": 2,
@@ -100,7 +115,7 @@
     }
   ],
   "pendingSetups": [],
-  "lastProcessedTime": "2026-09-08 21:00:00",
-  "lastClose": 4390.87488,
-  "nextId": 12
+  "lastProcessedTime": "2026-09-08 22:30:00",
+  "lastClose": 4408.91702,
+  "nextId": 14
 }
