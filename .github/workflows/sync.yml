@@ -1,0 +1,36 @@
+name: Sync DXY/Gold paper trading state
+
+on:
+  schedule:
+    # Every hour, at minute 5. Keeps total API calls/day = 24 * 28 = 672,
+    # safely under Twelve Data's free-tier 800/day limit.
+    - cron: '5 * * * *'
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run sync
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+        run: node src/sync.js
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/*.json
+          git diff --staged --quiet || git commit -m "Auto-update paper trading state [skip ci]"
+          git push

@@ -1,0 +1,9 @@
+{
+  "balance": 10000,
+  "openTrades": [],
+  "closedTrades": [],
+  "pendingSetups": [],
+  "lastProcessedTime": null,
+  "lastClose": null,
+  "nextId": 1
+}

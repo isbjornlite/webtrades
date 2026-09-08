@@ -1,0 +1,14 @@
+{
+  "name": "dxy-gold-paper-trading",
+  "version": "1.0.0",
+  "description": "Paper-trading research system for a DXY/Gold divergence strategy. Fake money only. No broker, no real trades.",
+  "private": true,
+  "main": "src/sync.js",
+  "scripts": {
+    "sync": "node src/sync.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
