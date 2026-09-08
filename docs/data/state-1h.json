@@ -2,8 +2,19 @@
   "balance": 10000,
   "openTrades": [],
   "closedTrades": [],
-  "pendingSetups": [],
-  "lastProcessedTime": null,
-  "lastClose": null,
-  "nextId": 1
+  "pendingSetups": [
+    {
+      "id": 1,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 99.16572105188234,
+      "impulseEnd": 98.91487345386379,
+      "detectedTime": "2026-09-07 23:00:00",
+      "ageBars": 22,
+      "retracementMet": false
+    }
+  ],
+  "lastProcessedTime": "2026-09-08 21:00:00",
+  "lastClose": 4390.87488,
+  "nextId": 2
 }
