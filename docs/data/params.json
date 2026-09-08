@@ -1,0 +1,17 @@
+{
+  "impulseBars": 10,
+  "minDxyImpulseATR": 2.0,
+  "maxGoldMoveATR": 0.75,
+  "dxyRetracement": 0.5,
+  "maxSetupAgeBars": 30,
+  "emaFast": 20,
+  "emaSlow": 50,
+  "rsiPeriod": 14,
+  "atrPeriod": 14,
+  "minConfirmations": 2,
+  "riskPct": 0.01,
+  "slATR": 1.5,
+  "dxyReversalExitPct": 0.003,
+  "startBalance": 10000,
+  "outputsize": 150
+}
