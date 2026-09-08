@@ -86,11 +86,21 @@
       "impulseStart": 99.56423691474279,
       "impulseEnd": 99.2146359402883,
       "detectedTime": "2026-09-04 19:00:00",
-      "ageBars": 25,
+      "ageBars": 26,
+      "retracementMet": false
+    },
+    {
+      "id": 11,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 99.15654387320453,
+      "impulseEnd": 98.840543304999,
+      "detectedTime": "2026-09-09 03:00:00",
+      "ageBars": 0,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-08 23:00:00",
-  "lastClose": 4404.31891,
-  "nextId": 11
+  "lastProcessedTime": "2026-09-09 03:00:00",
+  "lastClose": 4384.3856,
+  "nextId": 12
 }
