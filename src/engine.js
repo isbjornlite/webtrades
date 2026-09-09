@@ -68,11 +68,19 @@ function runEngine(state, dxyBars, goldBars) {
     }
 
     // 3) check confirmations, open trades
+    // At most one new trade per direction per bar — prevents multiple pending
+    // setups maturing on the same bar from stacking near-identical trades.
+    let openedLongThisBar = false;
+    let openedShortThisBar = false;
+
     for (const setup of [...state.pendingSetups]) {
       if (!setup.retracementMet) continue;
       if (goldEMAf[i] == null || goldEMAs[i] == null || goldRSI[i] == null) continue;
 
       const isLong = setup.tradeDirection === 'long';
+      if (isLong && openedLongThisBar) continue;
+      if (!isLong && openedShortThisBar) continue;
+
       const emaOk = isLong
         ? goldClose[i] > goldEMAf[i] && goldEMAf[i] > goldEMAs[i]
         : goldClose[i] < goldEMAf[i] && goldEMAf[i] < goldEMAs[i];
@@ -90,7 +98,9 @@ function runEngine(state, dxyBars, goldBars) {
 
       if (confirmations.length >= PARAMS.minConfirmations) {
         const entry = goldClose[i];
-        const slDist = PARAMS.slATR * goldATR[i];
+        // Safety floor: never let an unusually low ATR shrink the stop
+        // distance (and therefore inflate position size) to an extreme.
+        const slDist = Math.max(PARAMS.slATR * goldATR[i], entry * PARAMS.minSlDistancePct);
         const sl = isLong ? entry - slDist : entry + slDist;
         const riskAmount = state.balance * PARAMS.riskPct;
         const size = riskAmount / slDist;
@@ -104,6 +114,7 @@ function runEngine(state, dxyBars, goldBars) {
           confirmations,
         });
         newTrades++;
+        if (isLong) openedLongThisBar = true; else openedShortThisBar = true;
         state.pendingSetups = state.pendingSetups.filter((s) => s.id !== setup.id);
       }
     }

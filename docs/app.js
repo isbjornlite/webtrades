@@ -142,6 +142,7 @@ function renderParams() {
       <div><span>Min. bekreftelser</span><span>${p.minConfirmations} av 3</span></div>
       <div><span>Risiko per trade</span><span>${p.riskPct * 100}%</span></div>
       <div><span>Stop loss</span><span>${p.slATR} ATR</span></div>
+      <div><span>Min. SL-avstand</span><span>${(p.minSlDistancePct ?? 0) * 100}% av pris</span></div>
       <div><span>DXY reversal exit</span><span>${p.dxyReversalExitPct * 100}%</span></div>
     </div>
     <div class="footnote">Endres i src/config.js i repoet — ikke her.</div>
