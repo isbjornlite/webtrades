@@ -64,3 +64,8 @@ td{padding:6px 6px;border-bottom:1px solid #1e252f;font-family:var(--mono);}
 .paramgrid div span:last-child{color:var(--gold);font-family:var(--mono);}
 .cmp-table td, .cmp-table th{text-align:right;}
 .cmp-table td:first-child, .cmp-table th:first-child{text-align:left;}
+
+.keyrow{display:flex;gap:6px;}
+button{font-family:inherit;font-size:13px;font-weight:600;border:none;border-radius:8px;padding:9px 14px;cursor:pointer;}
+.btn-ghost{background:var(--panel2);color:var(--text);border:1px solid var(--border);}
+a{text-decoration:none;}
