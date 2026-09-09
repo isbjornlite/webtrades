@@ -11,6 +11,7 @@ const PARAMS = {
   minConfirmations: 2,
   riskPct: 0.01,
   slATR: 1.5,
+  minSlDistancePct: 0.003, // safety floor: SL can never be closer than 0.3% of price, even if ATR is unusually low
   dxyReversalExitPct: 0.003,
   startBalance: 10000,
   outputsize: 150,
