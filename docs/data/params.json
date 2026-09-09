@@ -10,7 +10,8 @@
   "atrPeriod": 14,
   "minConfirmations": 2,
   "riskPct": 0.01,
-  "slATR": 1.5,
+  "slATR": 2,
+  "minSlDistancePct": 0.003,
   "dxyReversalExitPct": 0.003,
   "startBalance": 10000,
   "outputsize": 150
