@@ -67,6 +67,24 @@ Alt ligger i `src/config.js`. Endre en verdi, commit, push — neste
 planlagte kjøring bruker de nye parameterne automatisk (historiske trades
 endres ikke, kun fremtidig oppførsel).
 
+## Kjøre en backtest
+
+Live-systemet bygger opp historikk sakte (bar for bar, i sanntid). Vil du
+se raskt om strategien har hatt et fortrinn over en lengre historisk
+periode, kan du kjøre en engangs-backtest:
+
+1. Gå til repoet → **Actions** → velg **"Backtest DXY/Gold strategy"** →
+   **Run workflow**
+2. La feltet "outputsize" stå på standardverdien (5000 barer), eller sett
+   et lavere tall hvis Twelve Data-planen din ikke tillater så mye historikk
+3. Vent til den er ferdig (samme ventetid som en vanlig synk, ca. 3–4 min)
+4. Åpne dashbordet ditt og trykk **"Se backtest-resultater"** øverst
+
+Backtesten kjører strategien over hele den hentede historikken i én omgang,
+med en helt fersk konto ($10 000) — den påvirker **ikke** de løpende
+paper-trading-kontoene dine. Du kan kjøre den på nytt så ofte du vil; hver
+kjøring overskriver forrige backtest-resultat.
+
 ## Nullstille en konto
 
 Slett (eller tøm) `docs/data/state-<timeframe>.json` via GitHub sin
