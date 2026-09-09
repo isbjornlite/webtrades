@@ -1,6 +1,22 @@
 {
   "balance": 9317.781296999972,
-  "openTrades": [],
+  "openTrades": [
+    {
+      "id": 18,
+      "direction": "long",
+      "entry": 4408.05557,
+      "sl": 4390.098651830598,
+      "size": 5.188964614694885,
+      "riskAmount": 93.17781296999972,
+      "entryTime": "2026-09-09 21:00:00",
+      "entryDXY": 98.6584436524287,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ]
+    }
+  ],
   "closedTrades": [
     {
       "id": 2,
@@ -146,11 +162,11 @@
       "impulseStart": 98.86564238324306,
       "impulseEnd": 98.76622005590137,
       "detectedTime": "2026-09-09 10:30:00",
-      "ageBars": 18,
+      "ageBars": 27,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-09 19:30:00",
-  "lastClose": 4397.98038,
-  "nextId": 17
+  "lastProcessedTime": "2026-09-10 00:00:00",
+  "lastClose": 4421.87533,
+  "nextId": 19
 }
