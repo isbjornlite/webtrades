@@ -10,7 +10,7 @@ const PARAMS = {
   atrPeriod: 14,
   minConfirmations: 2,
   riskPct: 0.01,
-  slATR: 1.5,
+  slATR: 2.0,
   minSlDistancePct: 0.003, // safety floor: SL can never be closer than 0.3% of price, even if ATR is unusually low
   dxyReversalExitPct: 0.003,
   startBalance: 10000,
