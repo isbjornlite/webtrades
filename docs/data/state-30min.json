@@ -1,36 +1,6 @@
 {
-  "balance": 9131.425671059973,
+  "balance": 8946.93360137937,
   "openTrades": [
-    {
-      "id": 21,
-      "direction": "long",
-      "entry": 4416.66659,
-      "sl": 4388.827116811523,
-      "size": 3.3134978602426894,
-      "riskAmount": 92.24603484029973,
-      "entryTime": "2026-09-10 03:00:00",
-      "entryDXY": 98.73166595833995,
-      "confirmations": [
-        "EMA",
-        "RSI",
-        "Price action"
-      ]
-    },
-    {
-      "id": 23,
-      "direction": "long",
-      "entry": 4402.19928,
-      "sl": 4383.433368623949,
-      "size": 4.915617099099487,
-      "riskAmount": 92.24603484029973,
-      "entryTime": "2026-09-10 10:30:00",
-      "entryDXY": 98.8108874378158,
-      "confirmations": [
-        "EMA",
-        "RSI",
-        "Price action"
-      ]
-    },
     {
       "id": 25,
       "direction": "short",
@@ -220,10 +190,50 @@
       "exitReason": "Stop loss",
       "pnl": -93.17781297000052,
       "rMultiple": -1.0000000000000084
+    },
+    {
+      "id": 21,
+      "direction": "long",
+      "entry": 4416.66659,
+      "sl": 4388.827116811523,
+      "size": 3.3134978602426894,
+      "riskAmount": 92.24603484029973,
+      "entryTime": "2026-09-10 03:00:00",
+      "entryDXY": 98.73166595833995,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4388.827116811523,
+      "exitTime": "2026-09-10 20:30:00",
+      "exitReason": "Stop loss",
+      "pnl": -92.24603484030028,
+      "rMultiple": -1.000000000000006
+    },
+    {
+      "id": 23,
+      "direction": "long",
+      "entry": 4402.19928,
+      "sl": 4383.433368623949,
+      "size": 4.915617099099487,
+      "riskAmount": 92.24603484029973,
+      "entryTime": "2026-09-10 10:30:00",
+      "entryDXY": 98.8108874378158,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4383.433368623949,
+      "exitTime": "2026-09-10 20:30:00",
+      "exitReason": "Stop loss",
+      "pnl": -92.24603484030192,
+      "rMultiple": -1.0000000000000238
     }
   ],
   "pendingSetups": [],
-  "lastProcessedTime": "2026-09-10 19:30:00",
-  "lastClose": 4391.79295,
+  "lastProcessedTime": "2026-09-11 00:00:00",
+  "lastClose": 4354.81935,
   "nextId": 26
 }
