@@ -1,6 +1,22 @@
 {
   "balance": 9605.9601,
-  "openTrades": [],
+  "openTrades": [
+    {
+      "id": 13,
+      "direction": "short",
+      "entry": 4343.85977,
+      "sl": 4407.882371142364,
+      "size": 1.5004014095959193,
+      "riskAmount": 96.059601,
+      "entryTime": "2026-09-11 03:00:00",
+      "entryDXY": 99.04980132030148,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ]
+    }
+  ],
   "closedTrades": [
     {
       "id": 2,
@@ -84,27 +100,17 @@
   ],
   "pendingSetups": [
     {
-      "id": 11,
-      "impulseDir": "down",
-      "tradeDirection": "short",
-      "impulseStart": 99.15654387320453,
-      "impulseEnd": 98.840543304999,
-      "detectedTime": "2026-09-09 03:00:00",
-      "ageBars": 11,
-      "retracementMet": false
-    },
-    {
       "id": 12,
       "impulseDir": "up",
       "tradeDirection": "long",
       "impulseStart": 98.76622005590137,
       "impulseEnd": 98.96637585534536,
       "detectedTime": "2026-09-10 23:00:00",
-      "ageBars": 0,
+      "ageBars": 1,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-10 23:00:00",
-  "lastClose": 4363.29444,
-  "nextId": 13
+  "lastProcessedTime": "2026-09-11 03:00:00",
+  "lastClose": 4343.85977,
+  "nextId": 14
 }

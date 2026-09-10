@@ -1,9 +1,9 @@
 {
-  "time": "2026-09-10T14:21:42.231Z",
+  "time": "2026-09-10T18:24:29.248Z",
   "log": [
-    "15 min: 0 nye trades, 0 lukket, 0 nye setups",
-    "30 min: 0 nye trades, 2 lukket, 0 nye setups",
-    "1 time: 0 nye trades, 1 lukket, 0 nye setups",
-    "4 timer: 0 nye trades, 0 lukket, 1 nye setups"
+    "15 min: hoppet over (manglende data for ett eller flere symboler)",
+    "30 min: 1 nye trades, 0 lukket, 1 nye setups",
+    "1 time: 0 nye trades, 0 lukket, 0 nye setups",
+    "4 timer: 1 nye trades, 0 lukket, 0 nye setups"
   ]
 }
