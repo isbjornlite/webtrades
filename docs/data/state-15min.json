@@ -1,5 +1,5 @@
 {
-  "balance": 9131.387343279197,
+  "balance": 8948.759596413613,
   "openTrades": [
     {
       "id": 27,
@@ -46,17 +46,17 @@
       ]
     },
     {
-      "id": 35,
+      "id": 38,
       "direction": "short",
-      "entry": 4318.51821,
-      "sl": 4331.47376463,
-      "size": 7.048241163010091,
-      "riskAmount": 91.31387343279197,
-      "entryTime": "2026-09-11 09:15:00",
-      "entryDXY": 99.10379890307084,
+      "entry": 4326.98435,
+      "sl": 4344.017963445926,
+      "size": 5.307196560814479,
+      "riskAmount": 90.40073469846406,
+      "entryTime": "2026-09-11 12:15:00",
+      "entryDXY": 99.12009461691689,
       "confirmations": [
-        "EMA",
-        "RSI"
+        "RSI",
+        "Price action"
       ]
     }
   ],
@@ -236,31 +236,59 @@
       "exitReason": "Stop loss",
       "pnl": -92.23623579069657,
       "rMultiple": -0.9999999999999742
+    },
+    {
+      "id": 35,
+      "direction": "short",
+      "entry": 4318.51821,
+      "sl": 4331.47376463,
+      "size": 7.048241163010091,
+      "riskAmount": 91.31387343279197,
+      "entryTime": "2026-09-11 09:15:00",
+      "entryDXY": 99.10379890307084,
+      "confirmations": [
+        "EMA",
+        "RSI"
+      ],
+      "exitPrice": 4331.47376463,
+      "exitTime": "2026-09-11 10:45:00",
+      "exitReason": "Stop loss",
+      "pnl": -91.31387343279073,
+      "rMultiple": -0.9999999999999865
+    },
+    {
+      "id": 37,
+      "direction": "long",
+      "entry": 4330.38795,
+      "sl": 4316.239145127579,
+      "size": 6.45382237271368,
+      "riskAmount": 91.31387343279197,
+      "entryTime": "2026-09-11 10:45:00",
+      "entryDXY": 99.06623975005527,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4316.239145127579,
+      "exitTime": "2026-09-11 12:45:00",
+      "exitReason": "Stop loss",
+      "pnl": -91.31387343279324,
+      "rMultiple": -1.000000000000014
     }
   ],
   "pendingSetups": [
     {
-      "id": 32,
+      "id": 39,
       "impulseDir": "up",
       "tradeDirection": "long",
-      "impulseStart": 98.94007296547291,
-      "impulseEnd": 98.99540383124452,
-      "detectedTime": "2026-09-11 02:45:00",
-      "ageBars": 28,
-      "retracementMet": false
-    },
-    {
-      "id": 33,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.06140801967479,
-      "impulseEnd": 99.09982935622128,
-      "detectedTime": "2026-09-11 08:00:00",
+      "impulseStart": 99.05274730484565,
+      "impulseEnd": 99.1212643743171,
+      "detectedTime": "2026-09-11 12:30:00",
       "ageBars": 7,
-      "retracementMet": true
+      "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-11 09:45:00",
-  "lastClose": 4314.30339,
-  "nextId": 36
+  "lastProcessedTime": "2026-09-11 14:15:00",
+  "lastClose": 4328.04281,
+  "nextId": 40
 }
