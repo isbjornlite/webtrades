@@ -1,5 +1,5 @@
 {
-  "balance": 9899.999999999998,
+  "balance": 9800.999999999998,
   "openTrades": [
     {
       "id": 6,
@@ -49,10 +49,29 @@
       "exitReason": "Stop loss",
       "pnl": -100.00000000000114,
       "rMultiple": -1.0000000000000113
+    },
+    {
+      "id": 11,
+      "direction": "long",
+      "entry": 4385.37245,
+      "sl": 4339.357721105421,
+      "size": 2.1514850218244583,
+      "riskAmount": 98.99999999999999,
+      "entryTime": "2026-09-11 22:00:00",
+      "entryDXY": 99.06299493037866,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4339.357721105421,
+      "exitTime": "2026-09-11 22:00:00",
+      "exitReason": "Stop loss",
+      "pnl": -99.00000000000003,
+      "rMultiple": -1.0000000000000004
     }
   ],
   "pendingSetups": [],
-  "lastProcessedTime": "2026-09-11 19:00:00",
-  "lastClose": 4344.57559,
-  "nextId": 10
+  "lastProcessedTime": "2026-09-12 00:00:00",
+  "lastClose": 4381.74973,
+  "nextId": 12
 }
