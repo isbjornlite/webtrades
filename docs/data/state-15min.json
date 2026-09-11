@@ -1,5 +1,5 @@
 {
-  "balance": 8948.759596413613,
+  "balance": 8858.358861715147,
   "openTrades": [
     {
       "id": 27,
@@ -46,14 +46,14 @@
       ]
     },
     {
-      "id": 38,
-      "direction": "short",
-      "entry": 4326.98435,
-      "sl": 4344.017963445926,
-      "size": 5.307196560814479,
-      "riskAmount": 90.40073469846406,
-      "entryTime": "2026-09-11 12:15:00",
-      "entryDXY": 99.12009461691689,
+      "id": 40,
+      "direction": "long",
+      "entry": 4335.03924,
+      "sl": 4315.117290668156,
+      "size": 4.4919096255854765,
+      "riskAmount": 89.48759596413613,
+      "entryTime": "2026-09-11 15:00:00",
+      "entryDXY": 99.08362195224781,
       "confirmations": [
         "RSI",
         "Price action"
@@ -274,21 +274,40 @@
       "exitReason": "Stop loss",
       "pnl": -91.31387343279324,
       "rMultiple": -1.000000000000014
+    },
+    {
+      "id": 38,
+      "direction": "short",
+      "entry": 4326.98435,
+      "sl": 4344.017963445926,
+      "size": 5.307196560814479,
+      "riskAmount": 90.40073469846406,
+      "entryTime": "2026-09-11 12:15:00",
+      "entryDXY": 99.12009461691689,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4344.017963445926,
+      "exitTime": "2026-09-11 15:45:00",
+      "exitReason": "Stop loss",
+      "pnl": -90.40073469846531,
+      "rMultiple": -1.0000000000000138
     }
   ],
   "pendingSetups": [
     {
-      "id": 39,
+      "id": 41,
       "impulseDir": "up",
       "tradeDirection": "long",
-      "impulseStart": 99.05274730484565,
-      "impulseEnd": 99.1212643743171,
-      "detectedTime": "2026-09-11 12:30:00",
-      "ageBars": 7,
+      "impulseStart": 99.03902631916124,
+      "impulseEnd": 99.11809757723519,
+      "detectedTime": "2026-09-11 18:15:00",
+      "ageBars": 5,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-11 14:15:00",
-  "lastClose": 4328.04281,
-  "nextId": 40
+  "lastProcessedTime": "2026-09-11 19:30:00",
+  "lastClose": 4344.57559,
+  "nextId": 42
 }
