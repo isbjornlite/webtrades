@@ -62,7 +62,7 @@ function renderParams(p) {
       <div><span>Maks veke-andel</span><span>${p.maxWickPct * 100}% av range</span></div>
       <div><span>ATR-periode</span><span>${p.atrPeriod}</span></div>
       <div><span>Stop loss</span><span>${p.slATR} ATR</span></div>
-      <div><span>Take profit</span><span>${p.tpATR} ATR</span></div>
+      <div><span>Take profit</span><span>Dynamisk — neste motsatte likviditetsniv&aring; som dannes etter entry</span></div>
       <div><span>Min. SL-avstand</span><span>${p.minSlDistancePct * 100}% av pris</span></div>
       <div><span>Risiko per trade</span><span>${p.riskPct * 100}%</span></div>
     </div>
