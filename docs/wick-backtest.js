@@ -1,3 +1,18 @@
+const SYMBOLS = [
+  { slug: 'XAUUSD', label: 'Gold (XAU/USD)' },
+  { slug: 'BTCUSD', label: 'Bitcoin (BTC/USD)' },
+];
+
+const TF_ORDER = [
+  { key: '15min', label: '15 min' },
+  { key: '30min', label: '30 min' },
+  { key: '1h', label: '1 time' },
+  { key: '4h', label: '4 timer' },
+];
+
+let activeSymbol = SYMBOLS[0].slug;
+let cache = {}; // slug -> data or null
+
 function fmt(n, d = 2) {
   return n == null || isNaN(n) ? '—' : n.toLocaleString('no-NO', { minimumFractionDigits: d, maximumFractionDigits: d });
 }
@@ -48,13 +63,6 @@ async function fetchJSON(path) {
   }
 }
 
-const TF_ORDER = [
-  { key: '15min', label: '15 min' },
-  { key: '30min', label: '30 min' },
-  { key: '1h', label: '1 time' },
-  { key: '4h', label: '4 timer' },
-];
-
 function renderParams(p) {
   return `<div class="card"><h2>Strategiparametere (gjeldende)</h2>
     <div class="paramgrid">
@@ -62,23 +70,40 @@ function renderParams(p) {
       <div><span>Maks veke-andel</span><span>${p.maxWickPct * 100}% av range</span></div>
       <div><span>ATR-periode</span><span>${p.atrPeriod}</span></div>
       <div><span>Stop loss</span><span>${p.slATR} ATR</span></div>
-      <div><span>Take profit</span><span>Dynamisk — neste motsatte likviditetsniv&aring; som dannes etter entry</span></div>
+      <div><span>Take profit</span><span>Dynamisk — neste motsatte likviditetsniv&aring;</span></div>
       <div><span>Min. SL-avstand</span><span>${p.minSlDistancePct * 100}% av pris</span></div>
       <div><span>Risiko per trade</span><span>${p.riskPct * 100}%</span></div>
     </div>
-    <div class="footnote">Endres i src/wick/config.js — ikke her.</div>
+    <div class="footnote">Endres i src/wick/config.js, eller velg symbol direkte når du trigger workflowen manuelt.</div>
   </div>`;
 }
 
+function renderSymTabs() {
+  const el = document.getElementById('symtabs');
+  el.innerHTML = '';
+  SYMBOLS.forEach((s) => {
+    const b = document.createElement('button');
+    b.textContent = s.label;
+    if (s.slug === activeSymbol) b.classList.add('active');
+    b.onclick = () => { activeSymbol = s.slug; render(); };
+    el.appendChild(b);
+  });
+}
+
 async function render() {
-  const data = await fetchJSON('data/wick-backtest.json');
+  renderSymTabs();
   const status = document.getElementById('syncstatus');
   const main = document.getElementById('main');
 
+  if (!(activeSymbol in cache)) {
+    cache[activeSymbol] = await fetchJSON(`data/wick-backtest-${activeSymbol}.json`);
+  }
+  const data = cache[activeSymbol];
+
   if (!data) {
-    status.textContent = 'Ingen backtest kjørt ennå.';
+    status.textContent = 'Ingen backtest kjørt ennå for dette instrumentet.';
     main.innerHTML = `<div class="card"><div class="empty">
-      Kjør workflowen "Backtest no-wick reversal strategy" fra Actions-fanen på GitHub for å generere resultater her.
+      Kjør workflowen "Backtest no-wick reversal strategy" fra Actions-fanen på GitHub, med riktig symbol i "symbol"-feltet, for å generere resultater her.
     </div></div>`;
     return;
   }
@@ -114,7 +139,7 @@ async function render() {
     const stats = computeStats(r.closedTrades);
 
     html += `<div class="card"><h2>${tf.label} — detaljer</h2>
-      <div class="footnote">Periode: ${r.fromTime} → ${r.toTime} (${r.barsProcessed} barer)</div>`;
+      <div class="footnote">Periode: ${r.fromTime} → ${r.toTime} (${r.barsProcessed} barer) · ${r.openAtEnd} trade(r) fortsatt åpne ved slutten</div>`;
 
     if (!stats) {
       html += `<div class="empty">Ingen trades utløst i denne perioden.</div></div>`;
