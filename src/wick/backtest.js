@@ -7,6 +7,8 @@ const { runWickEngine } = require('./engine');
 const DATA_DIR = path.join(__dirname, '..', '..', 'docs', 'data');
 const REQUEST_DELAY_MS = 8000;
 const OUTPUTSIZE = parseInt(process.env.WICK_BACKTEST_OUTPUTSIZE || PARAMS.outputsize, 10);
+const SYMBOL = process.env.WICK_BACKTEST_SYMBOL || PARAMS.symbol;
+const SYMBOL_SLUG = SYMBOL.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
 
 async function main() {
   const apikey = process.env.TWELVE_DATA_API_KEY;
@@ -15,15 +17,15 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`Wick-strategi backtest: ${PARAMS.symbol}, outputsize=${OUTPUTSIZE}\n`);
+  console.log(`Wick-strategi backtest: ${SYMBOL}, outputsize=${OUTPUTSIZE}\n`);
 
   const results = {};
   let call = 0;
   for (const tf of TIMEFRAMES) {
     call++;
-    console.log(`[${call}/${TIMEFRAMES.length}] Henter ${PARAMS.symbol} (${tf.label})...`);
+    console.log(`[${call}/${TIMEFRAMES.length}] Henter ${SYMBOL} (${tf.label})...`);
     try {
-      const bars = await fetchSeries(PARAMS.symbol, tf.td, apikey, OUTPUTSIZE);
+      const bars = await fetchSeries(SYMBOL, tf.td, apikey, OUTPUTSIZE);
       if (bars.length < 60) {
         results[tf.key] = { label: tf.label, error: `For lite historikk (${bars.length} barer)` };
       } else {
@@ -48,14 +50,15 @@ async function main() {
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(
-    path.join(DATA_DIR, 'wick-backtest.json'),
-    JSON.stringify({ ranAt: new Date().toISOString(), outputsize: OUTPUTSIZE, params: PARAMS, results }, null, 2)
+    path.join(DATA_DIR, `wick-backtest-${SYMBOL_SLUG}.json`),
+    JSON.stringify({ ranAt: new Date().toISOString(), outputsize: OUTPUTSIZE, params: { ...PARAMS, symbol: SYMBOL }, results }, null, 2)
   );
 
-  console.log('\nWick-backtest ferdig. Resultater lagret i docs/data/wick-backtest.json.');
+  console.log(`\nWick-backtest ferdig. Resultater lagret i docs/data/wick-backtest-${SYMBOL_SLUG}.json.`);
 }
 
 main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
+

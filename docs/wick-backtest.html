@@ -10,13 +10,14 @@
 
 <header>
   <h1>No-Wick Reversal Strategy — Backtest</h1>
-  <div class="sub">Marubozu-candle → linje ved motsatt ekstrempunkt → reversering når linjen tappes. XAU/USD. Kun forskning, ingen ekte handler.</div>
+  <div class="sub">Marubozu-candle → linje ved motsatt ekstrempunkt → reversering når linjen tappes. TP er dynamisk: neste motsatte likviditetsnivå. Kun forskning, ingen ekte handler.</div>
   <div class="syncbar" id="syncstatus">Laster...</div>
   <div class="keyrow" style="margin-top:10px">
     <a href="index.html" style="flex:1"><button class="btn-ghost" style="width:100%">← DXY/Gold live-dashboard</button></a>
   </div>
 </header>
 
+<nav class="tabs" id="symtabs"></nav>
 <main id="main"></main>
 
 <script src="wick-backtest.js"></script>

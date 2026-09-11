@@ -3,8 +3,12 @@ name: Backtest no-wick reversal strategy
 on:
   workflow_dispatch:
     inputs:
+      symbol:
+        description: 'Symbol å backteste, Twelve Data-format (f.eks. XAU/USD eller BTC/USD)'
+        required: false
+        default: 'XAU/USD'
       outputsize:
-        description: 'Antall historiske barer å hente for XAU/USD (Twelve Data gratisplan tåler vanligvis opptil 5000)'
+        description: 'Antall historiske barer å hente (Twelve Data gratisplan tåler vanligvis opptil 5000)'
         required: false
         default: '5000'
 
@@ -26,6 +30,7 @@ jobs:
       - name: Run wick-reversal backtest
         env:
           TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          WICK_BACKTEST_SYMBOL: ${{ github.event.inputs.symbol }}
           WICK_BACKTEST_OUTPUTSIZE: ${{ github.event.inputs.outputsize }}
         run: node src/wick/backtest.js
 
@@ -33,6 +38,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/wick-backtest.json
+          git add docs/data/wick-backtest-*.json
           git diff --staged --quiet || git commit -m "Wick-reversal backtest results [skip ci]"
           git push
