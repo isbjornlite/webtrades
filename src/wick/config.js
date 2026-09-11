@@ -3,7 +3,11 @@ const PARAMS = {
   maxWickPct: 0.05,       // a wick must be <= 5% of the candle's total range to count as "no wick"
   atrPeriod: 14,
   slATR: 1.5,             // stop loss = slATR x ATR from the tapped line
-  tpATR: 3.0,             // take profit = tpATR x ATR from the tapped line (2:1 reward:risk by default)
+  // Take profit is dynamic, not ATR-based: it targets the next opposite-type
+  // liquidity line that forms AFTER entry. A long trade's TP is the first
+  // future resistance line (bearish no-wick candle); a short's TP is the
+  // first future support line (bullish no-wick candle). If none ever forms,
+  // the trade stays open until stop loss or the end of the data.
   minSlDistancePct: 0.003, // safety floor, same as the DXY/Gold system
   riskPct: 0.01,
   startBalance: 10000,

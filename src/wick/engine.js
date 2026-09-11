@@ -19,15 +19,13 @@ function runWickEngine(bars, PARAMS) {
   for (let i = warmup; i < n; i++) {
     if (atrArr[i] == null) continue;
 
-    // 1) check open trades for TP/SL on this bar
+    // 1) check open trades for SL on this bar (TP is handled via line taps in step 2)
     for (const t of [...openTrades]) {
       let exitPrice = null, reason = null;
       if (t.direction === 'long') {
         if (lows[i] <= t.sl) { exitPrice = t.sl; reason = 'Stop loss'; }
-        else if (highs[i] >= t.tp) { exitPrice = t.tp; reason = 'Take profit'; }
       } else {
         if (highs[i] >= t.sl) { exitPrice = t.sl; reason = 'Stop loss'; }
-        else if (lows[i] <= t.tp) { exitPrice = t.tp; reason = 'Take profit'; }
       }
       if (exitPrice != null) {
         const pnl = t.direction === 'long'
@@ -35,7 +33,7 @@ function runWickEngine(bars, PARAMS) {
           : t.size * (t.entry - exitPrice);
         balance += pnl;
         closedTrades.push({
-          ...t, exitPrice, exitTime: bars[i].time, exitReason: reason, pnl, rMultiple: pnl / t.riskAmount,
+          ...t, tpLineRef: undefined, exitPrice, exitTime: bars[i].time, exitReason: reason, pnl, rMultiple: pnl / t.riskAmount,
         });
         openTrades.splice(openTrades.indexOf(t), 1);
       }
@@ -45,23 +43,40 @@ function runWickEngine(bars, PARAMS) {
     for (const line of [...lines]) {
       if (line.createdIndex >= i) continue;
       if (lows[i] <= line.price && highs[i] >= line.price) {
+        // a) close any open trade whose TP target is exactly this line
+        for (const t of [...openTrades]) {
+          if (t.tpLineRef === line) {
+            const exitPrice = line.price;
+            const pnl = t.direction === 'long'
+              ? t.size * (exitPrice - t.entry)
+              : t.size * (t.entry - exitPrice);
+            balance += pnl;
+            closedTrades.push({
+              ...t, tpLineRef: undefined, exitPrice, exitTime: bars[i].time, exitReason: 'Take profit (liquidity sweep)', pnl, rMultiple: pnl / t.riskAmount,
+            });
+            openTrades.splice(openTrades.indexOf(t), 1);
+          }
+        }
+
+        // b) open a new reversal trade off this tap
         const isLong = line.type === 'support';
         const entry = line.price;
         const slDist = Math.max(PARAMS.slATR * atrArr[i], entry * PARAMS.minSlDistancePct);
-        const tpDist = PARAMS.tpATR * atrArr[i];
         const sl = isLong ? entry - slDist : entry + slDist;
-        const tp = isLong ? entry + tpDist : entry - tpDist;
         const riskAmount = balance * PARAMS.riskPct;
         const size = riskAmount / slDist;
 
         openTrades.push({
           id: nextId++,
           direction: isLong ? 'long' : 'short',
-          entry, sl, tp, size, riskAmount,
+          entry, sl, size, riskAmount,
           entryTime: bars[i].time,
           lineType: line.type,
           lineCreatedTime: bars[line.createdIndex].time,
+          tp: null,        // assigned dynamically once a future opposite-type line forms
+          tpLineRef: null,
         });
+
         lines.splice(lines.indexOf(line), 1);
       }
     }
@@ -74,11 +89,23 @@ function runWickEngine(bars, PARAMS) {
       const topWick = highs[i] - bodyTop;
       const botWick = bodyBottom - lows[i];
       const noWick = topWick <= PARAMS.maxWickPct * range && botWick <= PARAMS.maxWickPct * range;
-      if (noWick) {
-        if (closes[i] > opens[i]) {
-          lines.push({ price: lows[i], type: 'support', createdIndex: i });
-        } else if (closes[i] < opens[i]) {
-          lines.push({ price: highs[i], type: 'resistance', createdIndex: i });
+
+      if (noWick && (closes[i] > opens[i] || closes[i] < opens[i])) {
+        const newLine = closes[i] > opens[i]
+          ? { price: lows[i], type: 'support', createdIndex: i }
+          : { price: highs[i], type: 'resistance', createdIndex: i };
+        lines.push(newLine);
+
+        // assign this new line as TP for any open trade still waiting for a future opposite level
+        for (const t of openTrades) {
+          if (t.tp != null) continue;
+          if (t.direction === 'long' && newLine.type === 'resistance') {
+            t.tp = newLine.price;
+            t.tpLineRef = newLine;
+          } else if (t.direction === 'short' && newLine.type === 'support') {
+            t.tp = newLine.price;
+            t.tpLineRef = newLine;
+          }
         }
       }
     }
