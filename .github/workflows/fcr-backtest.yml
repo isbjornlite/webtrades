@@ -1,0 +1,38 @@
+name: Backtest FCR opening-range strategy
+
+on:
+  workflow_dispatch:
+    inputs:
+      lookbackDays:
+        description: 'Antall dager 1-min-historikk å hente (hentes i biter av 3 dager per API-kall)'
+        required: false
+        default: '30'
+
+permissions:
+  contents: write
+
+jobs:
+  fcr-backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run FCR backtest
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          FCR_LOOKBACK_DAYS: ${{ github.event.inputs.lookbackDays }}
+        run: node src/fcr/backtest.js
+
+      - name: Commit backtest results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/fcr-backtest.json
+          git diff --staged --quiet || git commit -m "FCR backtest results [skip ci]"
+          git push
