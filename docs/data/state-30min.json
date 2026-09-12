@@ -298,11 +298,11 @@
       "impulseStart": 99.11841937657444,
       "impulseEnd": 99.08017197796867,
       "detectedTime": "2026-09-12 09:00:00",
-      "ageBars": 2,
+      "ageBars": 13,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-12 10:00:00",
-  "lastClose": 4348.44335,
+  "lastProcessedTime": "2026-09-12 15:30:00",
+  "lastClose": 4348.43661,
   "nextId": 33
 }
