@@ -28,6 +28,20 @@
         "RSI",
         "Price action"
       ]
+    },
+    {
+      "id": 36,
+      "direction": "short",
+      "entry": 4348.3384,
+      "sl": 4361.3834152,
+      "size": 6.652752381107224,
+      "riskAmount": 86.78525593337993,
+      "entryTime": "2026-09-14 03:00:00",
+      "entryDXY": 99.089952744538,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ]
     }
   ],
   "closedTrades": [
@@ -304,8 +318,19 @@
       "rMultiple": -1.0000000000000109
     }
   ],
-  "pendingSetups": [],
-  "lastProcessedTime": "2026-09-14 02:00:00",
-  "lastClose": 4348.42146,
-  "nextId": 35
+  "pendingSetups": [
+    {
+      "id": 37,
+      "impulseDir": "up",
+      "tradeDirection": "long",
+      "impulseStart": 98.99694611484513,
+      "impulseEnd": 99.09582546289005,
+      "detectedTime": "2026-09-14 04:00:00",
+      "ageBars": 2,
+      "retracementMet": false
+    }
+  ],
+  "lastProcessedTime": "2026-09-14 05:00:00",
+  "lastClose": 4348.44797,
+  "nextId": 38
 }

@@ -28,6 +28,50 @@
         "RSI",
         "Price action"
       ]
+    },
+    {
+      "id": 52,
+      "direction": "long",
+      "entry": 4348.43761,
+      "sl": 4335.39229717,
+      "size": 6.5146423983670125,
+      "riskAmount": 84.98554806227916,
+      "entryTime": "2026-09-14 02:30:00",
+      "entryDXY": 98.99798728420242,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ]
+    },
+    {
+      "id": 53,
+      "direction": "short",
+      "entry": 4348.36062,
+      "sl": 4361.405701860001,
+      "size": 6.514757743519377,
+      "riskAmount": 84.98554806227916,
+      "entryTime": "2026-09-14 03:00:00",
+      "entryDXY": 99.07966415221075,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ]
+    },
+    {
+      "id": 54,
+      "direction": "short",
+      "entry": 4348.3384,
+      "sl": 4361.3834152,
+      "size": 6.514791033917628,
+      "riskAmount": 84.98554806227916,
+      "entryTime": "2026-09-14 03:15:00",
+      "entryDXY": 99.089952744538,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ]
     }
   ],
   "closedTrades": [
@@ -346,27 +390,17 @@
   ],
   "pendingSetups": [
     {
-      "id": 49,
-      "impulseDir": "down",
-      "tradeDirection": "short",
-      "impulseStart": 99.08780394610119,
-      "impulseEnd": 99.05436581597891,
-      "detectedTime": "2026-09-13 22:30:00",
-      "ageBars": 14,
-      "retracementMet": false
-    },
-    {
-      "id": 50,
+      "id": 55,
       "impulseDir": "up",
       "tradeDirection": "long",
-      "impulseStart": 98.99680479543909,
-      "impulseEnd": 99.0485236959382,
-      "detectedTime": "2026-09-14 02:00:00",
+      "impulseStart": 98.998531366145,
+      "impulseEnd": 99.08513242520806,
+      "detectedTime": "2026-09-14 05:15:00",
       "ageBars": 0,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-14 02:00:00",
-  "lastClose": 4348.42146,
-  "nextId": 51
+  "lastProcessedTime": "2026-09-14 05:15:00",
+  "lastClose": 4348.44797,
+  "nextId": 56
 }
