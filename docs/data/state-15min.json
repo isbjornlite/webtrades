@@ -58,6 +58,21 @@
         "RSI",
         "Price action"
       ]
+    },
+    {
+      "id": 61,
+      "direction": "short",
+      "entry": 4291.33586,
+      "sl": 4308.296583773596,
+      "size": 4.960619234459647,
+      "riskAmount": 84.13569258165639,
+      "entryTime": "2026-09-15 05:30:00",
+      "entryDXY": 99.44997255190358,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ]
     }
   ],
   "closedTrades": [
@@ -401,11 +416,11 @@
       "impulseStart": 99.62103851483229,
       "impulseEnd": 99.55887669037232,
       "detectedTime": "2026-09-15 01:00:00",
-      "ageBars": 14,
+      "ageBars": 29,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-15 04:30:00",
-  "lastClose": 4312.21527,
-  "nextId": 60
+  "lastProcessedTime": "2026-09-15 08:15:00",
+  "lastClose": 4294.27561,
+  "nextId": 62
 }
