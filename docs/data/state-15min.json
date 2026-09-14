@@ -395,37 +395,17 @@
   ],
   "pendingSetups": [
     {
-      "id": 56,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.07004689652976,
-      "impulseEnd": 99.1230501794969,
-      "detectedTime": "2026-09-14 10:00:00",
-      "ageBars": 24,
-      "retracementMet": false
-    },
-    {
-      "id": 57,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.1230501794969,
-      "impulseEnd": 99.22260659240409,
-      "detectedTime": "2026-09-14 12:30:00",
-      "ageBars": 14,
-      "retracementMet": false
-    },
-    {
       "id": 58,
       "impulseDir": "up",
       "tradeDirection": "long",
       "impulseStart": 99.24889094789113,
       "impulseEnd": 99.32251753702513,
       "detectedTime": "2026-09-14 15:15:00",
-      "ageBars": 3,
+      "ageBars": 29,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-14 16:00:00",
-  "lastClose": 4333.79108,
+  "lastProcessedTime": "2026-09-14 22:30:00",
+  "lastClose": 4275.97767,
   "nextId": 59
 }
