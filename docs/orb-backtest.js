@@ -64,7 +64,7 @@ function renderParams(p) {
   return `<div class="card"><h2>Strategiparametere</h2>
     <div class="paramgrid">
       <div><span>Opening range</span><span>${p.orStart}–${p.orEnd} EST</span></div>
-      <div><span>Entry</span><span>Direkte p&aring; brudd (ingen retest)</span></div>
+      <div><span>Entry</span><span>Close av 3-min-candle #6 (${p.signalCandleStart}–${p.signalCandleEnd})</span></div>
       <div><span>SL</span><span>Motsatt side av rangen</span></div>
       <div><span>Risk:Reward</span><span>1:${p.rrRatio}</span></div>
       <div><span>Risiko per trade</span><span>${p.riskPct * 100}%</span></div>
