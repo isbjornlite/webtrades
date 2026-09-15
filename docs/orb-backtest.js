@@ -64,11 +64,13 @@ function renderParams(p) {
   return `<div class="card"><h2>Strategiparametere</h2>
     <div class="paramgrid">
       <div><span>Opening range</span><span>${p.orStart}–${p.orEnd} EST</span></div>
+      <div><span>Entry</span><span>Direkte p&aring; brudd (ingen retest)</span></div>
+      <div><span>SL</span><span>Motsatt side av rangen</span></div>
       <div><span>Risk:Reward</span><span>1:${p.rrRatio}</span></div>
       <div><span>Risiko per trade</span><span>${p.riskPct * 100}%</span></div>
       <div><span>Kjøringsvindu hentet</span><span>${p.lookbackDays} dager</span></div>
     </div>
-    <div class="footnote">Kun ett forsøk per dag. Ingen tidsgrense for når brudd + retest må skje etter ${p.orEnd}.</div>
+    <div class="footnote">Kun ett forsøk per dag. Ingen tidsgrense for når bruddet må skje etter ${p.orEnd}.</div>
   </div>`;
 }
 
@@ -83,7 +85,7 @@ async function render() {
   if (!data) {
     status.textContent = 'Ingen backtest kjørt ennå.';
     main.innerHTML = `<div class="card"><div class="empty">
-      Kjør workflowen "Backtest ORB retest strategy" fra Actions-fanen på GitHub for å generere resultater her.
+      Kjør workflowen "Backtest classic ORB strategy" fra Actions-fanen på GitHub for å generere resultater her.
     </div></div>`;
     return;
   }
