@@ -1,13 +1,3 @@
-function isBullish(b) { return b.close > b.open; }
-function isBearish(b) { return b.close < b.open; }
-
-function isBullishEngulfing(prev, cur) {
-  return isBearish(prev) && isBullish(cur) && cur.open <= prev.close && cur.close >= prev.open;
-}
-function isBearishEngulfing(prev, cur) {
-  return isBullish(prev) && isBearish(cur) && cur.open >= prev.close && cur.close <= prev.open;
-}
-
 function timeOf(b) { return b.time.slice(11, 19); } // "HH:MM:SS"
 function dayOf(b) { return b.time.slice(0, 10); }   // "YYYY-MM-DD"
 
@@ -41,50 +31,28 @@ function runOrbEngine(allBars, PARAMS) {
     }
     if (orCount === 0) { dayLog.push({ day, status: 'Ingen data ved åpning (09:30)' }); continue; }
 
-    // 2) breakout after 09:45, no time limit for the rest of the day
-    let breakoutType = null, breakoutIdx = -1;
+    // 2) breakout after 09:45 — entry happens immediately, no retest wait
+    let entryIdx = -1, direction = null;
     for (let i = start; i <= end; i++) {
       const t = timeOf(allBars[i]);
       if (t < PARAMS.orEnd + ':00') continue;
       const b = allBars[i];
-      if (b.high > orHigh) { breakoutType = 'up'; breakoutIdx = i; break; }
-      if (b.low < orLow) { breakoutType = 'down'; breakoutIdx = i; break; }
+      if (b.high > orHigh) { entryIdx = i; direction = 'long'; break; }
+      if (b.low < orLow) { entryIdx = i; direction = 'short'; break; }
     }
-    if (!breakoutType) { dayLog.push({ day, status: 'Ingen brudd av opening range' }); continue; }
+    if (entryIdx === -1) { dayLog.push({ day, status: 'Ingen brudd av opening range' }); continue; }
 
-    const direction = breakoutType === 'up' ? 'long' : 'short';
-    const level = breakoutType === 'up' ? orHigh : orLow;
-
-    // 3) retest: first bar after the breakout whose range touches the broken level
-    let retestIdx = -1;
-    for (let i = breakoutIdx + 1; i <= end; i++) {
-      const b = allBars[i];
-      if (b.low <= level && b.high >= level) { retestIdx = i; break; }
-    }
-    if (retestIdx === -1) { dayLog.push({ day, status: 'Ingen retest av nivået' }); continue; }
-
-    // 4) confirmation: an engulfing candle in the trade direction, after the retest
-    let entryIdx = -1;
-    for (let i = Math.max(retestIdx + 1, start + 1); i <= end; i++) {
-      const prev = allBars[i - 1];
-      const cur = allBars[i];
-      if (direction === 'long' && isBullishEngulfing(prev, cur)) { entryIdx = i; break; }
-      if (direction === 'short' && isBearishEngulfing(prev, cur)) { entryIdx = i; break; }
-    }
-    if (entryIdx === -1) { dayLog.push({ day, status: 'Ingen bekreftelsescandle etter retest' }); continue; }
-
-    // 5) build the trade: entry at confirmation candle's close, SL beyond the confirmation pattern, fixed R:R
+    // 3) build the trade: entry at breakout bar's close, SL at opposite side of the range, fixed R:R
     const entryBar = allBars[entryIdx];
-    const prevBar = allBars[entryIdx - 1];
     const entry = entryBar.close;
-    const sl = direction === 'long' ? Math.min(prevBar.low, entryBar.low) : Math.max(prevBar.high, entryBar.high);
+    const sl = direction === 'long' ? orLow : orHigh;
     const riskDist = direction === 'long' ? entry - sl : sl - entry;
     if (riskDist <= 0) { dayLog.push({ day, status: 'Ugyldig risikoavstand, hoppet over' }); continue; }
     const tp = direction === 'long' ? entry + PARAMS.rrRatio * riskDist : entry - PARAMS.rrRatio * riskDist;
     const riskAmount = balance * PARAMS.riskPct;
     const size = riskAmount / riskDist;
 
-    // 6) simulate forward through the full dataset
+    // 4) simulate forward through the full dataset
     let exitPrice = null, exitReason = null, exitTime = null;
     for (let k = entryIdx + 1; k < n; k++) {
       const b = allBars[k];

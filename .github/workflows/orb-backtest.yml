@@ -1,4 +1,4 @@
-name: Backtest ORB retest strategy
+name: Backtest classic ORB strategy
 
 on:
   workflow_dispatch:
