@@ -1,0 +1,53 @@
+{
+  "ranAt": "2026-09-15T15:18:50.136Z",
+  "outputsize": 5000,
+  "params": {
+    "symbols": [
+      {
+        "key": "XAUUSD",
+        "label": "Gold (XAU/USD)",
+        "td": "XAU/USD"
+      },
+      {
+        "key": "BTCUSD",
+        "label": "Bitcoin (BTC/USD)",
+        "td": "BTC/USD"
+      },
+      {
+        "key": "SPY",
+        "label": "S&P 500 ETF (SPY)",
+        "td": "SPY"
+      },
+      {
+        "key": "XAGUSD",
+        "label": "Silver (XAG/USD)",
+        "td": "XAG/USD"
+      }
+    ],
+    "fractalStrength": 2,
+    "maxZonePairGapBars": 30,
+    "impulseMultiplier": 1,
+    "rrRatio": 3,
+    "riskPct": 0.01,
+    "startBalance": 10000,
+    "outputsize": 5000
+  },
+  "results": {
+    "15min": {
+      "label": "15 min",
+      "error": "XAG/USD (15min): This symbol is available starting with the Grow or Venture plan. Consider upgrading now at https://twelvedata.com/pricing"
+    },
+    "30min": {
+      "label": "30 min",
+      "error": "XAG/USD (30min): This symbol is available starting with the Grow or Venture plan. Consider upgrading now at https://twelvedata.com/pricing"
+    },
+    "1h": {
+      "label": "1 time",
+      "error": "XAG/USD (1h): This symbol is available starting with the Grow or Venture plan. Consider upgrading now at https://twelvedata.com/pricing"
+    },
+    "4h": {
+      "label": "4 timer",
+      "error": "XAG/USD (4h): This symbol is available starting with the Grow or Venture plan. Consider upgrading now at https://twelvedata.com/pricing"
+    }
+  }
+}
