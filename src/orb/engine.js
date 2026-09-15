@@ -31,18 +31,35 @@ function runOrbEngine(allBars, PARAMS) {
     }
     if (orCount === 0) { dayLog.push({ day, status: 'Ingen data ved åpning (09:30)' }); continue; }
 
-    // 2) breakout after 09:45 — entry happens immediately, no retest wait
-    let entryIdx = -1, direction = null;
+    // 2) entry signal: the 6th 3-minute candle after 09:45 (10:00–10:02),
+    //    built by merging the three underlying 1-min bars. Its close decides
+    //    direction relative to the opening range.
+    const signalBars = [];
+    let lastSignalIdx = -1;
     for (let i = start; i <= end; i++) {
       const t = timeOf(allBars[i]);
-      if (t < PARAMS.orEnd + ':00') continue;
-      const b = allBars[i];
-      if (b.high > orHigh) { entryIdx = i; direction = 'long'; break; }
-      if (b.low < orLow) { entryIdx = i; direction = 'short'; break; }
+      if (t >= PARAMS.signalCandleStart + ':00' && t < PARAMS.signalCandleEnd + ':00') {
+        signalBars.push(allBars[i]);
+        lastSignalIdx = i;
+      }
     }
-    if (entryIdx === -1) { dayLog.push({ day, status: 'Ingen brudd av opening range' }); continue; }
+    if (signalBars.length === 0) {
+      dayLog.push({ day, status: `Ingen data i signal-candlen (${PARAMS.signalCandleStart}–${PARAMS.signalCandleEnd})` });
+      continue;
+    }
+    const lastSignalBar = allBars[lastSignalIdx];
+    const signalClose = lastSignalBar.close;
 
-    // 3) build the trade: entry at breakout bar's close, SL at opposite side of the range, fixed R:R
+    let entryIdx = -1, direction = null;
+    if (signalClose > orHigh) direction = 'long';
+    else if (signalClose < orLow) direction = 'short';
+    if (!direction) {
+      dayLog.push({ day, status: 'Signal-candlen lukket innenfor opening range — ingen trade' });
+      continue;
+    }
+    entryIdx = lastSignalIdx;
+
+    // 3) build the trade: entry at signal candle's close, SL at opposite side of the range, fixed R:R
     const entryBar = allBars[entryIdx];
     const entry = entryBar.close;
     const sl = direction === 'long' ? orLow : orHigh;
