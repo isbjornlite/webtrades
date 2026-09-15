@@ -42,6 +42,20 @@
         "RSI",
         "Price action"
       ]
+    },
+    {
+      "id": 42,
+      "direction": "long",
+      "entry": 4289.72797,
+      "sl": 4268.666506553865,
+      "size": 4.120571020875798,
+      "riskAmount": 86.78525593337993,
+      "entryTime": "2026-09-15 22:30:00",
+      "entryDXY": 99.5854570714017,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ]
     }
   ],
   "closedTrades": [
@@ -326,21 +340,21 @@
       "impulseStart": 99.50393275246947,
       "impulseEnd": 99.55625800432321,
       "detectedTime": "2026-09-15 11:00:00",
-      "ageBars": 13,
+      "ageBars": 24,
       "retracementMet": false
     },
     {
-      "id": 40,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.59299931641324,
-      "impulseEnd": 99.65801685959535,
-      "detectedTime": "2026-09-15 16:30:00",
-      "ageBars": 2,
-      "retracementMet": true
+      "id": 41,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 99.66274630822721,
+      "impulseEnd": 99.58487200474012,
+      "detectedTime": "2026-09-15 21:00:00",
+      "ageBars": 4,
+      "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-15 17:30:00",
-  "lastClose": 4285.21775,
-  "nextId": 41
+  "lastProcessedTime": "2026-09-15 23:00:00",
+  "lastClose": 4289.03141,
+  "nextId": 43
 }
