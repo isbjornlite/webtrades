@@ -1,5 +1,5 @@
 {
-  "balance": 8329.433565583984,
+  "balance": 8245.29787300233,
   "openTrades": [
     {
       "id": 27,
@@ -53,21 +53,6 @@
       "riskAmount": 84.98554806227916,
       "entryTime": "2026-09-14 03:15:00",
       "entryDXY": 99.089952744538,
-      "confirmations": [
-        "EMA",
-        "RSI",
-        "Price action"
-      ]
-    },
-    {
-      "id": 61,
-      "direction": "short",
-      "entry": 4291.33586,
-      "sl": 4308.296583773596,
-      "size": 4.960619234459647,
-      "riskAmount": 84.13569258165639,
-      "entryTime": "2026-09-15 05:30:00",
-      "entryDXY": 99.44997255190358,
       "confirmations": [
         "EMA",
         "RSI",
@@ -425,6 +410,26 @@
       "exitReason": "Stop loss",
       "pnl": -84.13569258165441,
       "rMultiple": -0.9999999999999766
+    },
+    {
+      "id": 61,
+      "direction": "short",
+      "entry": 4291.33586,
+      "sl": 4308.296583773596,
+      "size": 4.960619234459647,
+      "riskAmount": 84.13569258165639,
+      "entryTime": "2026-09-15 05:30:00",
+      "entryDXY": 99.44997255190358,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4308.296583773596,
+      "exitTime": "2026-09-15 12:00:00",
+      "exitReason": "Stop loss",
+      "pnl": -84.13569258165444,
+      "rMultiple": -0.9999999999999769
     }
   ],
   "pendingSetups": [
@@ -435,11 +440,11 @@
       "impulseStart": 99.47141100215588,
       "impulseEnd": 99.53880693743379,
       "detectedTime": "2026-09-15 10:45:00",
-      "ageBars": 2,
+      "ageBars": 27,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-15 11:15:00",
-  "lastClose": 4302.72344,
+  "lastProcessedTime": "2026-09-15 17:30:00",
+  "lastClose": 4285.21775,
   "nextId": 65
 }
