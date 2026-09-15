@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-09-15T15:34:02.459Z",
+  "ranAt": "2026-09-15T15:49:30.573Z",
   "lookbackDays": 30,
   "params": {
     "symbols": [
@@ -28,6 +28,8 @@
     "timezone": "America/New_York",
     "orStart": "09:30",
     "orEnd": "09:45",
+    "signalCandleStart": "10:00",
+    "signalCandleEnd": "10:03",
     "rrRatio": 3,
     "riskPct": 0.01,
     "startBalance": 10000,
