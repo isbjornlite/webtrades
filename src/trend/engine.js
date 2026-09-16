@@ -1,6 +1,10 @@
 const { ema, atr } = require('../indicators');
 
 function runTrendPullbackEngine(entryBars, trendBars, PARAMS) {
+  if (!entryBars.length || !trendBars.length) {
+    return { balance: PARAMS.startBalance, closedTrades: [] };
+  }
+
   const n = entryBars.length;
   const closes = entryBars.map((b) => b.close);
   const pbEma = ema(closes, PARAMS.pullbackEma);

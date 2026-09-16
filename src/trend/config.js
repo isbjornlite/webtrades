@@ -21,7 +21,7 @@ const PARAMS = {
 const TIMEFRAMES = [
   { key: '15min', label: '15 min', td: '15min' },
   { key: '30min', label: '30 min', td: '30min' },
-  { key: '1h', label: '1 time', td: '1h' },
+  { key: '1h', label: '1 hour', td: '1h' },
 ];
 
 module.exports = { PARAMS, TIMEFRAMES };

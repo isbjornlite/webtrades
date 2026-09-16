@@ -8,7 +8,7 @@ const SYMBOLS = [
 const TF_ORDER = [
   { key: '15min', label: '15 min' },
   { key: '30min', label: '30 min' },
-  { key: '1h', label: '1 time' },
+  { key: '1h', label: '1 hour' },
 ];
 
 let activeSymbol = SYMBOLS[0].key;
@@ -19,6 +19,10 @@ function fmt(n, d = 2) {
 }
 function fmtPct(n, d = 1) {
   return n == null || isNaN(n) ? '—' : (n * 100).toFixed(d) + '%';
+}
+function fmtSignedCurrency(n) {
+  if (n == null || isNaN(n)) return '—';
+  return `${n >= 0 ? '+' : '-'}$${fmt(Math.abs(n))}`;
 }
 function pnlClass(n) { return n >= 0 ? 'pos' : 'neg'; }
 
@@ -108,6 +112,7 @@ async function render() {
     <tr><th>Timeframe</th><th>Trades</th><th>Win rate</th><th>PF</th><th>Snitt R</th><th>Maks DD</th><th>Sluttsaldo</th></tr>`;
   TF_ORDER.forEach((tf) => {
     const r = data.results[tf.key];
+    const delta = r?.finalBalance - startBalance;
     if (!r || r.error) {
       html += `<tr><td>${tf.label}</td><td colspan="6">${r ? r.error : 'Ingen data'}</td></tr>`;
       return;
@@ -120,7 +125,7 @@ async function render() {
       <td>${stats ? fmt(stats.profitFactor) : '—'}</td>
       <td>${stats ? fmt(stats.avgR) + 'R' : '—'}</td>
       <td>${stats ? '$' + fmt(stats.maxDD) : '—'}</td>
-      <td class="${pnlClass(r.finalBalance - startBalance)}">$${fmt(r.finalBalance)}</td>
+      <td class="${pnlClass(delta)}">$${fmt(r.finalBalance)} <span class="footnote">(${delta >= 0 ? 'Profit' : 'Loss'} ${fmtSignedCurrency(delta)})</span></td>
     </tr>`;
   });
   html += `</table></div></div>`;
