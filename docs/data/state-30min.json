@@ -405,8 +405,29 @@
       "rMultiple": -0.9999999999999855
     }
   ],
-  "pendingSetups": [],
-  "lastProcessedTime": "2026-09-16 17:30:00",
-  "lastClose": 4338.33594,
-  "nextId": 50
+  "pendingSetups": [
+    {
+      "id": 50,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 99.64890868929353,
+      "impulseEnd": 99.61276471077285,
+      "detectedTime": "2026-09-16 18:00:00",
+      "ageBars": 10,
+      "retracementMet": true
+    },
+    {
+      "id": 51,
+      "impulseDir": "up",
+      "tradeDirection": "long",
+      "impulseStart": 99.5755487457709,
+      "impulseEnd": 99.73157218005171,
+      "detectedTime": "2026-09-16 22:00:00",
+      "ageBars": 2,
+      "retracementMet": false
+    }
+  ],
+  "lastProcessedTime": "2026-09-16 23:00:00",
+  "lastClose": 4354.13677,
+  "nextId": 52
 }
