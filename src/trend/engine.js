@@ -15,7 +15,7 @@ function runTrendPullbackEngine(entryBars, trendBars, PARAMS) {
   const trendDirAt = new Array(n).fill(null);
   for (let i = 0; i < n; i++) {
     while (trendPtr + 1 < trendBars.length && trendBars[trendPtr + 1].time <= entryBars[i].time) trendPtr++;
-    if (trendFast[trendPtr] != null && trendSlow[trendPtr] != null) {
+    if (trendBars[trendPtr].time <= entryBars[i].time && trendFast[trendPtr] != null && trendSlow[trendPtr] != null) {
       if (trendFast[trendPtr] > trendSlow[trendPtr]) trendDirAt[i] = 'long';
       else if (trendFast[trendPtr] < trendSlow[trendPtr]) trendDirAt[i] = 'short';
     }
@@ -83,7 +83,7 @@ function runTrendPullbackEngine(entryBars, trendBars, PARAMS) {
     } else {
       closedTrades.push({
         direction, entryTime: confirmBar.time, entry, initialSl, size, riskAmount,
-        exitPrice: null, exitReason: 'Åpen ved slutten av datasettet', exitTime: null, pnl: 0, rMultiple: 0,
+        exitPrice: null, exitReason: 'Open at end of dataset', exitTime: null, pnl: 0, rMultiple: 0,
       });
     }
 

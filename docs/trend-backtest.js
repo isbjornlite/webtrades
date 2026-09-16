@@ -100,6 +100,7 @@ async function render() {
   }
 
   status.textContent = `Kjørt: ${new Date(data.ranAt).toLocaleString('no-NO')} · ${data.outputsize} barer forespurt`;
+  const startBalance = data.params?.startBalance ?? 10000;
 
   let html = '';
   html += `<div class="card"><h2>Sammenligning på tvers av timeframes</h2>
@@ -119,7 +120,7 @@ async function render() {
       <td>${stats ? fmt(stats.profitFactor) : '—'}</td>
       <td>${stats ? fmt(stats.avgR) + 'R' : '—'}</td>
       <td>${stats ? '$' + fmt(stats.maxDD) : '—'}</td>
-      <td class="${pnlClass(r.finalBalance - 10000)}">$${fmt(r.finalBalance)}</td>
+      <td class="${pnlClass(r.finalBalance - startBalance)}">$${fmt(r.finalBalance)}</td>
     </tr>`;
   });
   html += `</table></div></div>`;
