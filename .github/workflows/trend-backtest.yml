@@ -1,0 +1,48 @@
+name: Backtest trend pullback strategy
+
+on:
+  workflow_dispatch:
+    inputs:
+      outputsize:
+        description: 'Antall historiske barer å hente per symbol/timeframe (gratisplan tåler vanligvis opptil 5000)'
+        required: false
+        default: '5000'
+      symbol:
+        description: 'Valgfritt: kjør kun ett symbol (f.eks. XAU/USD). Tom = alle 4.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  trend-backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run trend pullback backtest
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          TREND_BACKTEST_OUTPUTSIZE: ${{ github.event.inputs.outputsize }}
+          TREND_BACKTEST_SYMBOL: ${{ github.event.inputs.symbol }}
+        run: node src/trend/backtest.js
+
+      - name: Commit backtest results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          shopt -s nullglob
+          files=(docs/data/trend-backtest-*.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            exit 0
+          fi
+          git add "${files[@]}"
+          git diff --staged --quiet || git commit -m "Trend pullback backtest results [skip ci]"
+          git push
