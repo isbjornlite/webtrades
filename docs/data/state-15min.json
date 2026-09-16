@@ -1,5 +1,5 @@
 {
-  "balance": 8000.404280876286,
+  "balance": 8156.756517457573,
   "openTrades": [
     {
       "id": 27,
@@ -53,35 +53,6 @@
       "riskAmount": 84.98554806227916,
       "entryTime": "2026-09-14 03:15:00",
       "entryDXY": 99.089952744538,
-      "confirmations": [
-        "EMA",
-        "RSI",
-        "Price action"
-      ]
-    },
-    {
-      "id": 68,
-      "direction": "long",
-      "entry": 4285.40151,
-      "sl": 4268.947643614647,
-      "size": 5.011161316067647,
-      "riskAmount": 82.4529787300233,
-      "entryTime": "2026-09-16 01:15:00",
-      "entryDXY": 99.59865209416843,
-      "confirmations": [
-        "RSI",
-        "Price action"
-      ]
-    },
-    {
-      "id": 73,
-      "direction": "long",
-      "entry": 4312.87752,
-      "sl": 4297.778758050161,
-      "size": 5.352237800805561,
-      "riskAmount": 80.81216445329582,
-      "entryTime": "2026-09-16 12:30:00",
-      "entryDXY": 99.6643867679321,
       "confirmations": [
         "EMA",
         "RSI",
@@ -516,6 +487,45 @@
       "exitReason": "Stop loss",
       "pnl": -80.81216445329576,
       "rMultiple": -0.9999999999999993
+    },
+    {
+      "id": 68,
+      "direction": "long",
+      "entry": 4285.40151,
+      "sl": 4268.947643614647,
+      "size": 5.011161316067647,
+      "riskAmount": 82.4529787300233,
+      "entryTime": "2026-09-16 01:15:00",
+      "entryDXY": 99.59865209416843,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4314.67862,
+      "exitTime": "2026-09-17 04:15:00",
+      "exitReason": "DXY reversal",
+      "pnl": 146.71232107825725,
+      "rMultiple": 1.7793453109637072
+    },
+    {
+      "id": 73,
+      "direction": "long",
+      "entry": 4312.87752,
+      "sl": 4297.778758050161,
+      "size": 5.352237800805561,
+      "riskAmount": 80.81216445329582,
+      "entryTime": "2026-09-16 12:30:00",
+      "entryDXY": 99.6643867679321,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4314.67862,
+      "exitTime": "2026-09-17 04:15:00",
+      "exitReason": "DXY reversal",
+      "pnl": 9.639915503029174,
+      "rMultiple": 0.11928792612157318
     }
   ],
   "pendingSetups": [
@@ -526,11 +536,21 @@
       "impulseStart": 99.66505786851978,
       "impulseEnd": 99.73520051596121,
       "detectedTime": "2026-09-17 03:00:00",
-      "ageBars": 4,
+      "ageBars": 20,
+      "retracementMet": false
+    },
+    {
+      "id": 79,
+      "impulseDir": "up",
+      "tradeDirection": "long",
+      "impulseStart": 100.23556136877835,
+      "impulseEnd": 100.3141999183756,
+      "detectedTime": "2026-09-17 07:15:00",
+      "ageBars": 3,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-17 04:00:00",
-  "lastClose": 4340.00602,
-  "nextId": 79
+  "lastProcessedTime": "2026-09-17 08:00:00",
+  "lastClose": 4260.25602,
+  "nextId": 80
 }
