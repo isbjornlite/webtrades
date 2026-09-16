@@ -1,5 +1,5 @@
 {
-  "balance": 8162.844894272305,
+  "balance": 8081.216445329582,
   "openTrades": [
     {
       "id": 27,
@@ -74,15 +74,16 @@
       ]
     },
     {
-      "id": 71,
-      "direction": "short",
-      "entry": 4286.94504,
-      "sl": 4299.80587512,
-      "size": 6.3470566398741814,
-      "riskAmount": 81.62844894272305,
-      "entryTime": "2026-09-16 09:00:00",
-      "entryDXY": 99.65714627476031,
+      "id": 73,
+      "direction": "long",
+      "entry": 4312.87752,
+      "sl": 4297.778758050161,
+      "size": 5.352237800805561,
+      "riskAmount": 80.81216445329582,
+      "entryTime": "2026-09-16 12:30:00",
+      "entryDXY": 99.6643867679321,
       "confirmations": [
+        "EMA",
         "RSI",
         "Price action"
       ]
@@ -477,21 +478,40 @@
       "exitReason": "Stop loss",
       "pnl": -82.45297873002421,
       "rMultiple": -1.000000000000011
+    },
+    {
+      "id": 71,
+      "direction": "short",
+      "entry": 4286.94504,
+      "sl": 4299.80587512,
+      "size": 6.3470566398741814,
+      "riskAmount": 81.62844894272305,
+      "entryTime": "2026-09-16 09:00:00",
+      "entryDXY": 99.65714627476031,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4299.80587512,
+      "exitTime": "2026-09-16 12:15:00",
+      "exitReason": "Stop loss",
+      "pnl": -81.62844894272337,
+      "rMultiple": -1.0000000000000038
     }
   ],
   "pendingSetups": [
     {
-      "id": 72,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.63543352642324,
-      "impulseEnd": 99.69968946869197,
-      "detectedTime": "2026-09-16 11:15:00",
-      "ageBars": 0,
+      "id": 74,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 99.65966623672098,
+      "impulseEnd": 99.56338419023513,
+      "detectedTime": "2026-09-16 16:00:00",
+      "ageBars": 6,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-16 11:15:00",
-  "lastClose": 4289.50338,
-  "nextId": 73
+  "lastProcessedTime": "2026-09-16 17:30:00",
+  "lastClose": 4338.33594,
+  "nextId": 75
 }
