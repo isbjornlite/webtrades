@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Trend Pullback — Backtest</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Trend Pullback — Backtest</h1>
+  <div class="sub">4h EMA50/EMA200 trendfilter → pullback til EMA20 på handels-tidsrammen → bekreftelsescandle → ATR-trailing stop (ingen fast TP). Kun forskning, ingen ekte handler.</div>
+  <div class="syncbar" id="syncstatus">Laster...</div>
+  <div class="keyrow" style="margin-top:10px">
+    <a href="index.html" style="flex:1"><button class="btn-ghost" style="width:100%">← DXY/Gold live-dashboard</button></a>
+  </div>
+</header>
+
+<nav class="tabs" id="symtabs"></nav>
+<main id="main"></main>
+
+<script src="trend-backtest.js"></script>
+</body>
+</html>
