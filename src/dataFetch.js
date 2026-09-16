@@ -17,9 +17,33 @@ async function fetchSeries(symbol, interval, apikey, outputsize) {
     high: parseFloat(v.high),
     low: parseFloat(v.low),
     close: parseFloat(v.close),
+    volume: v.volume != null ? parseFloat(v.volume) || 0 : 0,
   }));
   bars.reverse(); // Twelve Data returns newest-first; we want ascending
   return bars;
 }
 
-module.exports = { fetchSeries, sleep };
+async function fetchSeriesRange(symbol, interval, apikey, startDate, endDate, timezone) {
+  const params = new URLSearchParams({
+    symbol, interval, start_date: startDate, end_date: endDate, outputsize: '5000', apikey,
+  });
+  if (timezone) params.set('timezone', timezone);
+  const url = `${BASE}?${params.toString()}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (data.status === 'error') {
+    throw new Error(`${symbol} (${interval}) ${startDate}..${endDate}: ${data.message || 'ukjent feil fra Twelve Data'}`);
+  }
+  if (!data.values) return [];
+  const bars = data.values.map((v) => ({
+    time: v.datetime,
+    open: parseFloat(v.open),
+    high: parseFloat(v.high),
+    low: parseFloat(v.low),
+    close: parseFloat(v.close),
+  }));
+  bars.reverse();
+  return bars;
+}
+
+module.exports = { fetchSeries, fetchSeriesRange, sleep };
