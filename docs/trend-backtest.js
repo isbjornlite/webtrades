@@ -109,7 +109,7 @@ async function render() {
   let html = '';
   html += `<div class="card"><h2>Sammenligning på tvers av timeframes</h2>
     <div class="tablewrap"><table class="cmp-table">
-    <tr><th>Timeframe</th><th>Trades</th><th>Win rate</th><th>PF</th><th>Snitt R</th><th>Maks DD</th><th>Sluttsaldo</th></tr>`;
+    <tr><th scope="col">Timeframe</th><th scope="col">Trades</th><th scope="col">Win rate</th><th scope="col">PF</th><th scope="col">Snitt R</th><th scope="col">Maks DD</th><th scope="col">Sluttsaldo</th></tr>`;
   TF_ORDER.forEach((tf) => {
     const r = data.results[tf.key];
     const delta = r?.finalBalance - startBalance;

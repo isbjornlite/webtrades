@@ -68,29 +68,29 @@ function runTrendPullbackEngine(entryBars, trendBars, PARAMS) {
       const b = entryBars[k];
       const curAtr = atrArr[k] != null ? atrArr[k] : entryAtr;
       if (direction === 'long') {
+        if (b.low <= sl) { exitPrice = sl; exitReason = 'Trailing stop'; exitTime = b.time; exitIdx = k; break; }
         const candidate = b.close - PARAMS.trailATR * curAtr;
         if (candidate > sl) sl = candidate;
-        if (b.low <= sl) { exitPrice = sl; exitReason = 'Trailing stop'; exitTime = b.time; exitIdx = k; break; }
       } else {
+        if (b.high >= sl) { exitPrice = sl; exitReason = 'Trailing stop'; exitTime = b.time; exitIdx = k; break; }
         const candidate = b.close + PARAMS.trailATR * curAtr;
         if (candidate < sl) sl = candidate;
-        if (b.high >= sl) { exitPrice = sl; exitReason = 'Trailing stop'; exitTime = b.time; exitIdx = k; break; }
       }
     }
 
-    if (exitPrice != null) {
-      const pnl = direction === 'long' ? size * (exitPrice - entry) : size * (entry - exitPrice);
-      balance += pnl;
-      closedTrades.push({
-        direction, entryTime: confirmBar.time, entry, initialSl, size, riskAmount,
-        exitPrice, exitReason, exitTime, pnl, rMultiple: pnl / riskAmount,
-      });
-    } else {
-      closedTrades.push({
-        direction, entryTime: confirmBar.time, entry, initialSl, size, riskAmount,
-        exitPrice: null, exitReason: 'Open at end of dataset', exitTime: null, pnl: 0, rMultiple: 0,
-      });
+    if (exitPrice == null) {
+      const lastBar = entryBars[n - 1];
+      exitPrice = lastBar.close;
+      exitReason = 'End of dataset';
+      exitTime = lastBar.time;
     }
+
+    const pnl = direction === 'long' ? size * (exitPrice - entry) : size * (entry - exitPrice);
+    balance += pnl;
+    closedTrades.push({
+      direction, entryTime: confirmBar.time, entry, initialSl, size, riskAmount,
+      exitPrice, exitReason, exitTime, pnl, rMultiple: pnl / riskAmount,
+    });
 
     nextSearchIdx = exitIdx + 1;
   }
