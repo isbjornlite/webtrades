@@ -55,6 +55,7 @@ function runTrendPullbackEngine(entryBars, trendBars, PARAMS) {
     const entryIdx = i + 1;
     const entry = confirmBar.close;
     const entryAtr = atrArr[entryIdx] != null ? atrArr[entryIdx] : atrArr[i];
+    if (entryAtr == null) continue;
     const initialSlDist = Math.max(PARAMS.initialSlATR * entryAtr, entry * PARAMS.minSlDistancePct);
     let sl = direction === 'long' ? entry - initialSlDist : entry + initialSlDist;
     const initialSl = sl;

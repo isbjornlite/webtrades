@@ -119,7 +119,7 @@ async function render() {
     }
     const stats = computeStats(r.closedTrades);
     html += `<tr>
-      <td>${tf.label}</td>
+      <th scope="row">${tf.label}</th>
       <td>${stats ? stats.N : 0}</td>
       <td>${stats ? fmtPct(stats.winRate) : '—'}</td>
       <td>${stats ? fmt(stats.profitFactor) : '—'}</td>
