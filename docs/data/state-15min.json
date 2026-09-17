@@ -1,5 +1,5 @@
 {
-  "balance": 8156.756517457573,
+  "balance": 8075.188952282998,
   "openTrades": [
     {
       "id": 27,
@@ -68,6 +68,20 @@
       "riskAmount": 81.56756517457573,
       "entryTime": "2026-09-17 10:00:00",
       "entryDXY": 100.23410701855633,
+      "confirmations": [
+        "RSI",
+        "Price action"
+      ]
+    },
+    {
+      "id": 85,
+      "direction": "long",
+      "entry": 4297.61945,
+      "sl": 4277.6157214838295,
+      "size": 4.036841904625551,
+      "riskAmount": 80.75188952282998,
+      "entryTime": "2026-09-17 14:45:00",
+      "entryDXY": 100.27170995127548,
       "confirmations": [
         "RSI",
         "Price action"
@@ -540,31 +554,41 @@
       "exitReason": "DXY reversal",
       "pnl": 9.639915503029174,
       "rMultiple": 0.11928792612157318
+    },
+    {
+      "id": 82,
+      "direction": "short",
+      "entry": 4276.57641,
+      "sl": 4298.129360758771,
+      "size": 3.7845196273822643,
+      "riskAmount": 81.56756517457573,
+      "entryTime": "2026-09-17 10:45:00",
+      "entryDXY": 100.33438259504247,
+      "confirmations": [
+        "EMA",
+        "RSI",
+        "Price action"
+      ],
+      "exitPrice": 4298.129360758771,
+      "exitTime": "2026-09-17 11:00:00",
+      "exitReason": "Stop loss",
+      "pnl": -81.56756517457481,
+      "rMultiple": -0.9999999999999887
     }
   ],
   "pendingSetups": [
     {
-      "id": 78,
-      "impulseDir": "up",
-      "tradeDirection": "long",
-      "impulseStart": 99.66505786851978,
-      "impulseEnd": 99.73520051596121,
-      "detectedTime": "2026-09-17 03:00:00",
-      "ageBars": 29,
-      "retracementMet": false
-    },
-    {
-      "id": 80,
+      "id": 84,
       "impulseDir": "down",
       "tradeDirection": "short",
-      "impulseStart": 100.33479637395536,
-      "impulseEnd": 100.28505788381129,
-      "detectedTime": "2026-09-17 09:00:00",
-      "ageBars": 5,
+      "impulseStart": 100.3444505919562,
+      "impulseEnd": 100.30971573101341,
+      "detectedTime": "2026-09-17 14:15:00",
+      "ageBars": 6,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-17 10:15:00",
-  "lastClose": 4285.25146,
-  "nextId": 82
+  "lastProcessedTime": "2026-09-17 15:45:00",
+  "lastClose": 4303.14024,
+  "nextId": 86
 }
