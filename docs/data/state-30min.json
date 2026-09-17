@@ -443,8 +443,19 @@
       "rMultiple": -0.999999999999999
     }
   ],
-  "pendingSetups": [],
-  "lastProcessedTime": "2026-09-17 15:30:00",
-  "lastClose": 4303.14024,
-  "nextId": 55
+  "pendingSetups": [
+    {
+      "id": 55,
+      "impulseDir": "down",
+      "tradeDirection": "short",
+      "impulseStart": 100.30975370336404,
+      "impulseEnd": 100.16895857368799,
+      "detectedTime": "2026-09-17 16:00:00",
+      "ageBars": 11,
+      "retracementMet": true
+    }
+  ],
+  "lastProcessedTime": "2026-09-17 21:30:00",
+  "lastClose": 4328.13483,
+  "nextId": 56
 }
