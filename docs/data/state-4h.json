@@ -106,11 +106,11 @@
       "impulseStart": 99.64103592127124,
       "impulseEnd": 100.32347308477974,
       "detectedTime": "2026-09-17 07:00:00",
-      "ageBars": 7,
+      "ageBars": 9,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-18 11:00:00",
-  "lastClose": 4360.84671,
+  "lastProcessedTime": "2026-09-18 19:00:00",
+  "lastClose": 4385.64555,
   "nextId": 15
 }
