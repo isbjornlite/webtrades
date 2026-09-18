@@ -129,17 +129,17 @@
   ],
   "pendingSetups": [
     {
-      "id": 20,
+      "id": 21,
       "impulseDir": "up",
       "tradeDirection": "long",
-      "impulseStart": 99.64849995888379,
-      "impulseEnd": 99.85919615353941,
-      "detectedTime": "2026-09-17 04:00:00",
-      "ageBars": 29,
+      "impulseStart": 100.1493252118365,
+      "impulseEnd": 100.21934492940298,
+      "detectedTime": "2026-09-18 10:00:00",
+      "ageBars": 4,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-18 09:00:00",
-  "lastClose": 4344.0836,
-  "nextId": 21
+  "lastProcessedTime": "2026-09-18 14:00:00",
+  "lastClose": 4360.78335,
+  "nextId": 22
 }
