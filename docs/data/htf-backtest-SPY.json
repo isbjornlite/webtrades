@@ -1,0 +1,105 @@
+{
+  "ranAt": "2026-09-20T07:53:58.698Z",
+  "outputsize": 5000,
+  "startBalance": 10000,
+  "params": {
+    "symbols": [
+      {
+        "key": "XAUUSD",
+        "label": "Gold (XAU/USD)",
+        "td": "XAU/USD"
+      },
+      {
+        "key": "BTCUSD",
+        "label": "Bitcoin (BTC/USD)",
+        "td": "BTC/USD"
+      },
+      {
+        "key": "SPY",
+        "label": "S&P 500 ETF (SPY)",
+        "td": "SPY"
+      },
+      {
+        "key": "XAGUSD",
+        "label": "Silver (XAG/USD)",
+        "td": "XAG/USD"
+      }
+    ],
+    "pairs": [
+      {
+        "key": "D_H1",
+        "label": "Daily → H1",
+        "htf": "1day",
+        "ltf": "1h"
+      },
+      {
+        "key": "H4_M15",
+        "label": "H4 → M15",
+        "htf": "4h",
+        "ltf": "15min"
+      },
+      {
+        "key": "H1_M5",
+        "label": "H1 → M5",
+        "htf": "1h",
+        "ltf": "5min"
+      },
+      {
+        "key": "M15_M1",
+        "label": "M15 → M1",
+        "htf": "15min",
+        "ltf": "1min"
+      }
+    ],
+    "maxWickPct": 0.05,
+    "fractalStrength": 2,
+    "consolidationLookback": 5,
+    "consolidationMaxATR": 1.5,
+    "atrPeriod": 14,
+    "riskPct": 0.01,
+    "startBalance": 10000,
+    "outputsize": 5000
+  },
+  "results": {
+    "D_H1": {
+      "label": "Daily → H1",
+      "htfBars": 5000,
+      "ltfBars": 5000,
+      "keyLevelCount": 103,
+      "fromTime": "2023-11-08 09:30:00",
+      "toTime": "2026-09-18 15:30:00",
+      "finalBalance": 10000,
+      "closedTrades": []
+    },
+    "H4_M15": {
+      "label": "H4 → M15",
+      "htfBars": 3332,
+      "ltfBars": 5000,
+      "keyLevelCount": 76,
+      "fromTime": "2025-12-11 11:00:00",
+      "toTime": "2026-09-18 15:45:00",
+      "finalBalance": 10000,
+      "closedTrades": []
+    },
+    "H1_M5": {
+      "label": "H1 → M5",
+      "htfBars": 5000,
+      "ltfBars": 5000,
+      "keyLevelCount": 93,
+      "fromTime": "2026-06-17 15:20:00",
+      "toTime": "2026-09-18 15:55:00",
+      "finalBalance": 10000,
+      "closedTrades": []
+    },
+    "M15_M1": {
+      "label": "M15 → M1",
+      "htfBars": 5000,
+      "ltfBars": 5000,
+      "keyLevelCount": 91,
+      "fromTime": "2026-09-01 10:40:00",
+      "toTime": "2026-09-18 15:59:00",
+      "finalBalance": 10000,
+      "closedTrades": []
+    }
+  }
+}
