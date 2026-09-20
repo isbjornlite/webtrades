@@ -45,10 +45,22 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
   const closedTrades = [];
   let cursorLtfIdx = 0;
 
-  for (const level of keyLevels) {
+  for (let levelIdx = 0; levelIdx < keyLevels.length; levelIdx++) {
+    const level = keyLevels[levelIdx];
+    const nextLevel = keyLevels[levelIdx + 1] || null;
+    let endIdxExclusive = n;
+    if (nextLevel) {
+      for (let i = Math.max(0, cursorLtfIdx); i < n; i++) {
+        if (ltfBars[i].time >= nextLevel.time) {
+          endIdxExclusive = i;
+          break;
+        }
+      }
+    }
+
     // 1) first LTF bar after the HTF key-level candle formed, not before our cursor
     let startIdx = -1;
-    for (let i = Math.max(0, cursorLtfIdx); i < n; i++) {
+    for (let i = Math.max(0, cursorLtfIdx); i < endIdxExclusive; i++) {
       if (ltfBars[i].time > level.time) { startIdx = i; break; }
     }
     if (startIdx === -1) continue;
@@ -58,6 +70,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
     let liq = null;
     for (const f of fractals) {
       if (f.idx < startIdx) continue;
+      if (f.idx >= endIdxExclusive) break;
       if (f.type !== wantType) continue;
       liq = f;
       break;
@@ -67,7 +80,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
 
     // 3) the sweep: a bar wicking beyond that liquidity level
     let sweepIdx = -1;
-    for (let i = liqConfirmedIdx + 1; i < n; i++) {
+    for (let i = liqConfirmedIdx + 1; i < endIdxExclusive; i++) {
       if (level.direction === 'long' && ltfBars[i].low < liq.price) { sweepIdx = i; break; }
       if (level.direction === 'short' && ltfBars[i].high > liq.price) { sweepIdx = i; break; }
     }
@@ -76,7 +89,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
     // 4) a small, tight consolidation zone (order-block style) right after the sweep
     const zoneStart = sweepIdx + 1;
     const zoneEnd = zoneStart + PARAMS.consolidationLookback - 1;
-    if (zoneEnd >= n) continue;
+    if (zoneEnd >= endIdxExclusive) continue;
     let zoneHigh = -Infinity, zoneLow = Infinity;
     for (let i = zoneStart; i <= zoneEnd; i++) {
       zoneHigh = Math.max(zoneHigh, ltfBars[i].high);
@@ -87,7 +100,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
 
     // 5) breakout of that zone, in the target direction
     const breakoutIdx = zoneEnd + 1;
-    if (breakoutIdx >= n) continue;
+    if (breakoutIdx >= endIdxExclusive) continue;
     const breakoutBar = ltfBars[breakoutIdx];
     let direction = null;
     if (level.direction === 'long' && breakoutBar.close > zoneHigh) direction = 'long';
@@ -106,7 +119,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
     const size = riskAmount / riskDist;
 
     let exitPrice = null, exitReason = null, exitTime = null, exitIdx = n;
-    for (let k = breakoutIdx + 1; k < n; k++) {
+    for (let k = breakoutIdx + 1; k < endIdxExclusive; k++) {
       const b = ltfBars[k];
       if (direction === 'long') {
         if (b.low <= sl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
@@ -131,7 +144,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
       });
     }
 
-    cursorLtfIdx = exitIdx + 1;
+    cursorLtfIdx = exitPrice != null ? exitIdx + 1 : breakoutIdx + 1;
   }
 
   return { balance, closedTrades, keyLevelCount: keyLevels.length };

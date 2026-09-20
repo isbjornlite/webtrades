@@ -20,6 +20,8 @@ async function main() {
     ? PARAMS.symbols.filter((s) => s.td === SYMBOL_FILTER || s.key === SYMBOL_FILTER)
     : PARAMS.symbols;
 
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+
   for (const sym of symbols) {
     console.log(`\n=== ${sym.label} ===`);
     const cache = {}; // interval -> bars, reused across pairs that share a timeframe
@@ -60,7 +62,6 @@ async function main() {
       }
     }
 
-    fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(
       path.join(DATA_DIR, `htf-backtest-${sym.key}.json`),
       JSON.stringify({ ranAt: new Date().toISOString(), outputsize: OUTPUTSIZE, params: PARAMS, results }, null, 2)
