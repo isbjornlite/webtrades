@@ -106,7 +106,7 @@
       "impulseStart": 99.64103592127124,
       "impulseEnd": 100.32347308477974,
       "detectedTime": "2026-09-17 07:00:00",
-      "ageBars": 20,
+      "ageBars": 21,
       "retracementMet": false
     },
     {
@@ -116,7 +116,7 @@
       "impulseStart": 100.07367766530909,
       "impulseEnd": 100.22173394901041,
       "detectedTime": "2026-09-19 11:00:00",
-      "ageBars": 7,
+      "ageBars": 8,
       "retracementMet": false
     },
     {
@@ -126,11 +126,11 @@
       "impulseStart": 100.35293666828491,
       "impulseEnd": 100.2165498360152,
       "detectedTime": "2026-09-20 07:00:00",
-      "ageBars": 2,
+      "ageBars": 3,
       "retracementMet": false
     }
   ],
-  "lastProcessedTime": "2026-09-20 15:00:00",
-  "lastClose": 4380.10218,
+  "lastProcessedTime": "2026-09-20 19:00:00",
+  "lastClose": 4380.10001,
   "nextId": 17
 }
