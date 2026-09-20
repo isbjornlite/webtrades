@@ -122,11 +122,17 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
     for (let k = breakoutIdx + 1; k < endIdxExclusive; k++) {
       const b = ltfBars[k];
       if (direction === 'long') {
-        if (b.low <= sl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
-        if (b.high >= tp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
+        const hitSl = b.low <= sl;
+        const hitTp = b.high >= tp;
+        if (hitSl && hitTp) { exitPrice = sl; exitReason = 'Stop loss (intrabar tie-break)'; exitTime = b.time; exitIdx = k; break; }
+        if (hitSl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
+        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
       } else {
-        if (b.high >= sl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
-        if (b.low <= tp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
+        const hitSl = b.high >= sl;
+        const hitTp = b.low <= tp;
+        if (hitSl && hitTp) { exitPrice = sl; exitReason = 'Stop loss (intrabar tie-break)'; exitTime = b.time; exitIdx = k; break; }
+        if (hitSl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
+        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
       }
     }
 

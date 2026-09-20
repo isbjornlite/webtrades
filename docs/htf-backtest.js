@@ -115,7 +115,7 @@ async function render() {
     html += `<tr>
       <td>${p.label}</td>
       <td>${r.keyLevelCount}</td>
-      <td>${stats ? stats.N : 0}</td>
+      <td>${r.closedTrades.length}</td>
       <td>${stats ? fmtPct(stats.winRate) : '—'}</td>
       <td>${stats ? fmt(stats.profitFactor) : '—'}</td>
       <td>${stats ? fmt(stats.avgR) + 'R' : '—'}</td>
