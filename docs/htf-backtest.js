@@ -23,7 +23,7 @@ function fmtPct(n, d = 1) {
 }
 function pnlClass(n) { return n >= 0 ? 'pos' : 'neg'; }
 
-function computeStats(closedTrades) {
+function computeStats(closedTrades, startBalance) {
   const resolved = closedTrades.filter((t) => t.exitPrice != null);
   const N = resolved.length;
   if (N === 0) return null;
@@ -35,7 +35,7 @@ function computeStats(closedTrades) {
   const profitFactor = grossLoss > 0 ? grossWin / grossLoss : (grossWin > 0 ? Infinity : 0);
   const avgR = resolved.reduce((s, t) => s + t.rMultiple, 0) / N;
 
-  let running = 0, peak = 0, maxDD = 0;
+  let running = startBalance, peak = startBalance, maxDD = 0;
   resolved.forEach((t) => {
     running += t.pnl;
     if (running > peak) peak = running;
@@ -112,7 +112,7 @@ async function render() {
       html += `<tr><td>${p.label}</td><td colspan="6">${r ? r.error : 'Ingen data'}</td></tr>`;
       return;
     }
-    const stats = computeStats(r.closedTrades);
+    const stats = computeStats(r.closedTrades, startBalance);
     html += `<tr>
       <td>${p.label}</td>
       <td>${r.keyLevelCount}</td>
@@ -128,7 +128,7 @@ async function render() {
   PAIR_ORDER.forEach((p) => {
     const r = data.results[p.key];
     if (!r || r.error) return;
-    const stats = computeStats(r.closedTrades);
+    const stats = computeStats(r.closedTrades, startBalance);
 
     html += `<div class="card"><h2>${p.label} — detaljer</h2>
       <div class="footnote">LTF-periode: ${r.fromTime} → ${r.toTime} (${r.ltfBars} LTF-barer, ${r.htfBars} HTF-barer, ${r.keyLevelCount} nøkkelnivåer funnet)</div>`;
