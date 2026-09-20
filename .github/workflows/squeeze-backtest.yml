@@ -1,0 +1,43 @@
+name: Backtest volatility squeeze strategy
+
+on:
+  workflow_dispatch:
+    inputs:
+      outputsize:
+        description: 'Antall historiske barer å hente per symbol/timeframe (gratisplan tåler vanligvis opptil 5000)'
+        required: false
+        default: '5000'
+      symbol:
+        description: 'Valgfritt: kjør kun ett symbol (f.eks. XAU/USD). Tom = alle 4.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  squeeze-backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run squeeze backtest
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          SQUEEZE_BACKTEST_OUTPUTSIZE: ${{ github.event.inputs.outputsize }}
+          SQUEEZE_BACKTEST_SYMBOL: ${{ github.event.inputs.symbol }}
+        run: node src/squeeze/backtest.js
+
+      - name: Commit backtest results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/squeeze-backtest-*.json
+          git diff --staged --quiet || git commit -m "Squeeze backtest results [skip ci]"
+          git push
