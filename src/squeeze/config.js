@@ -11,7 +11,7 @@ const PARAMS = {
   bbPeriod: 20,             // Bollinger Band period
   bbMult: 2,                // Bollinger Band standard-deviation multiplier
   squeezeLookback: 100,     // how many bars back we compare current band-width against
-  squeezePercentile: 10,    // width must be in the bottom X% of that lookback window to count as squeezed
+  squeezePercentile: 25,    // width must be in the bottom X% of that lookback window to count as squeezed
   atrPeriod: 14,
   initialSlATR: 1.5,
   trailATR: 2.0,
