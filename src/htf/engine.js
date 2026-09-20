@@ -126,13 +126,13 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
         const hitTp = b.high >= tp;
         if (hitSl && hitTp) { exitPrice = sl; exitReason = 'Stop loss (intrabar tie-break)'; exitTime = b.time; exitIdx = k; break; }
         if (hitSl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
-        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
+        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF level)'; exitTime = b.time; exitIdx = k; break; }
       } else {
         const hitSl = b.high >= sl;
         const hitTp = b.low <= tp;
         if (hitSl && hitTp) { exitPrice = sl; exitReason = 'Stop loss (intrabar tie-break)'; exitTime = b.time; exitIdx = k; break; }
         if (hitSl) { exitPrice = sl; exitReason = 'Stop loss'; exitTime = b.time; exitIdx = k; break; }
-        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF-nivå)'; exitTime = b.time; exitIdx = k; break; }
+        if (hitTp) { exitPrice = tp; exitReason = 'Take profit (HTF level)'; exitTime = b.time; exitIdx = k; break; }
       }
     }
 
@@ -146,7 +146,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
     } else {
       closedTrades.push({
         direction, htfLevelTime: level.time, tp, entryTime: breakoutBar.time, entry, sl, size, riskAmount,
-        exitPrice: null, exitReason: 'Åpen ved slutten av datasettet', exitTime: null, pnl: 0, rMultiple: 0,
+        exitPrice: null, exitReason: 'Open at end of dataset', exitTime: null, pnl: 0, rMultiple: 0,
       });
     }
 

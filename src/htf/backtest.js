@@ -64,7 +64,7 @@ async function main() {
 
     fs.writeFileSync(
       path.join(DATA_DIR, `htf-backtest-${sym.key}.json`),
-      JSON.stringify({ ranAt: new Date().toISOString(), outputsize: OUTPUTSIZE, params: PARAMS, results }, null, 2)
+      JSON.stringify({ ranAt: new Date().toISOString(), outputsize: OUTPUTSIZE, startBalance: PARAMS.startBalance, params: PARAMS, results }, null, 2)
     );
   }
 
