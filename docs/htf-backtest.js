@@ -105,7 +105,7 @@ async function render() {
   let html = '';
   html += `<div class="card"><h2>Sammenligning på tvers av tidsramme-par</h2>
     <div class="tablewrap"><table class="cmp-table">
-    <tr><th>Par</th><th>HTF-nivåer</th><th>Trades</th><th>Win rate</th><th>PF</th><th>Snitt R</th><th>Sluttsaldo</th></tr>`;
+    <tr><th>Par</th><th>HTF-nivåer</th><th>Trades</th><th>Win rate</th><th>PF</th><th>Snitt R</th><th>Sluttsaldo (P/L)</th></tr>`;
   PAIR_ORDER.forEach((p) => {
     const r = data.results[p.key];
     if (!r || r.error) {
@@ -113,6 +113,7 @@ async function render() {
       return;
     }
     const stats = computeStats(r.closedTrades, startBalance);
+    const pnl = r.finalBalance - startBalance;
     html += `<tr>
       <td>${p.label}</td>
       <td>${r.keyLevelCount}</td>
@@ -120,7 +121,7 @@ async function render() {
       <td>${stats ? fmtPct(stats.winRate) : '—'}</td>
       <td>${stats ? fmt(stats.profitFactor) : '—'}</td>
       <td>${stats ? fmt(stats.avgR) + 'R' : '—'}</td>
-      <td class="${pnlClass(r.finalBalance - startBalance)}">$${fmt(r.finalBalance)}</td>
+      <td class="${pnlClass(pnl)}">$${fmt(r.finalBalance)} (${pnl >= 0 ? '+' : '-'}$${fmt(Math.abs(pnl))})</td>
     </tr>`;
   });
   html += `</table></div></div>`;

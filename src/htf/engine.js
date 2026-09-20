@@ -80,7 +80,7 @@ function runHtfEngine(ltfBars, htfBars, PARAMS) {
 
     // 3) the sweep: a bar wicking beyond that liquidity level
     let sweepIdx = -1;
-    for (let i = liqConfirmedIdx + 1; i < endIdxExclusive; i++) {
+    for (let i = liqConfirmedIdx; i < endIdxExclusive; i++) {
       if (level.direction === 'long' && ltfBars[i].low < liq.price) { sweepIdx = i; break; }
       if (level.direction === 'short' && ltfBars[i].high > liq.price) { sweepIdx = i; break; }
     }
